@@ -9,7 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin') //css样式从j
 module.exports = {
   entry: {
     index: path.resolve(__dirname, './src/main.js'),
-    vendors: ['vue', 'vue-router']
+    vendors: ['vue', 'vue-router', 'vuex']
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -36,10 +36,6 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
-        // query: {
-        //   presets: ['es2015', 'stage-0'],
-        //   plugins: ['transform-runtime']
-        // }
       },
       {
         test: /\.vue$/,

@@ -4,16 +4,22 @@
 import Vue from 'vue'
 import App from './components/app.vue'
 import router from '../router/index'
+import store from './store/index'
 import {connectSocket} from '../service/socket'
 
 Vue.config.debug = true
 
 connectSocket()
 
-new Vue({
+console.log(store)
+
+let app = new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   }
 })
+
+export default app
