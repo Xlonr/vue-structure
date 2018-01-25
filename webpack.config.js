@@ -20,7 +20,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.sass'],
     alias: {
-      'vue': 'vue/dist/vue.common.js'
+      'vue': 'vue/dist/vue.esm.js'
     }
   },
   module: {
@@ -28,7 +28,7 @@ module.exports = {
       {
         test: /\.sass$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'css-loader',
+          fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
       },
@@ -41,13 +41,6 @@ module.exports = {
         test: /\.vue$/,
         use: ['vue-loader'],
         exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

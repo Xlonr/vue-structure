@@ -12,6 +12,7 @@
   import List from './list.vue'
   import {sendMess} from '../../service/socket'
   import {mapActions, mapGetters, mapState} from 'vuex'
+
   export default {
     components: {
       List
@@ -42,7 +43,3 @@
     }
   }
 </script>
-
-<style lang="sass">
-  @import "../../sass/all.sass";
-</style>

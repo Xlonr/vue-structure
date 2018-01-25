@@ -6,6 +6,7 @@ import App from './components/app.vue'
 import router from '../router/index'
 import store from './store/index'
 import {connectSocket} from '../service/socket'
+import '../sass/index.sass'
 
 Vue.config.debug = true
 
@@ -21,5 +22,3 @@ let app = new Vue({
     App
   }
 })
-
-export default app
