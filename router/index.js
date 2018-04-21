@@ -4,7 +4,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AppPage from '../src/components/app.vue'
-import Second from '../src/components/second.vue'
+import Second from '../src/components/classify/second.vue'
 
 Vue.use(Router)
 

@@ -3,6 +3,7 @@
  */
 import Vue from 'vue'
 import App from './components/app.vue'
+import {joinCom} from './components/index'
 import router from '../router/index'
 import store from './store/index'
 import {connectSocket} from '../service/socket'
@@ -12,7 +13,9 @@ Vue.config.debug = true
 
 connectSocket()
 
-console.log(store)
+joinCom(Vue)
+
+// console.log(Comp)
 
 let app = new Vue({
   el: '#app',
@@ -22,3 +25,5 @@ let app = new Vue({
     App
   }
 })
+
+export default app

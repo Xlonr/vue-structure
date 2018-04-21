@@ -5,18 +5,16 @@
     <div class="rightView">
       <router-view></router-view>
     </div>
+    <list></list>
   </div>
 </template>
 
 <script>
-  import List from './list.vue'
+//  import List from './list.vue'
   import {sendMess} from '../../service/socket'
   import {mapActions, mapGetters, mapState} from 'vuex'
 
   export default {
-    components: {
-      List
-    },
     data () {
       return {
         text: 'Demo'
