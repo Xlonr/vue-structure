@@ -1,0 +1,43 @@
+.pop
+  position: absolute
+  width: 210px
+  height: 150px
+  padding: 10px 15px
+  box-sizing: border-box
+  background: #ffffff
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  border-radius: 5px
+  cursor: default
+
+  .close-btn
+    position: absolute
+    right: 5px
+    top: 5px
+    line-height: 20px
+    font-size: 20px
+    color: rgba(0, 0, 0, .4)
+    cursor: pointer
+
+  &.is_top
+    left: 50%
+    bottom: 45px
+    transform: translate(-50%, 0)
+
+  &.is_bottom
+    top: 45px
+    left: 50%
+    transform: translate(-50%, 0)
+
+  &.is_right
+    left: 100%
+    top: 50%
+    transform: translate(0, -50%)
+
+  &.is_left
+    right: 100%
+    top: 50%
+    transform: translate(0, -50%)
+
+.tip-pos
+  position: relative

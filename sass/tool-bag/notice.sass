@@ -1,0 +1,109 @@
+.notifications
+  position: fixed
+  top: 70px
+  right: 20px
+  z-index: 1024
+  max-width: 400px
+  pointer-events: none
+  &.top-center
+    right: 0
+    left: 0
+    margin: 0 auto
+
+  &.left-center
+    left: 0
+
+  &.center
+    right: 0
+    left: 0
+    top: 0
+    bottom: 0
+    margin: 19% auto
+
+  &.top-left
+    right: auto
+    left: 0
+
+  &.bottom-left
+    top: auto
+    bottom: 20px
+    right: auto
+    left: 0
+
+  &.bottom-center
+    top: auto
+    bottom: 20px
+    right: 0
+    left: 0
+    margin: 0 auto
+
+  &.bottom-right
+    top: auto
+    bottom: 20px
+  .notification
+    margin: 30px 10px 0
+    animation: trans 2s
+    &.has-icon
+      padding-left: 45px
+    &.is-default
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)
+      background-color: #fff
+    .close
+      cursor: pointer
+      position: absolute
+      top: 10px
+      right: 10px
+      font-size: 12px !important
+      &:hover
+        color: #ff0000
+  .has-icon
+    padding-left: 45px
+  .bgColor
+    box-shadow: none
+.alert
+  position: relative
+  width: 340px
+  padding: 20px
+  backface-visibility: hidden
+  transform: translate3d(0, 0, 0)
+  pointer-events: all
+  box-sizing: border-box
+  border-radius: 3px
+  background-color: #ffffff
+  box-shadow: 0 1px 5px 0 rgba(84, 98, 105, 0.5)
+  -webkit-user-select: none
+  user-select: none
+  overflow: hidden
+  .title
+    font-size: 14px
+    line-height: 24px
+    margin-bottom: 10px
+    color: #232323
+  .ensure-wrap
+    font-size: 12px
+    line-height: 24px
+    color: #2194f2
+    cursor: pointer
+  .notification-content
+    margin-top: 0
+    font-size: 14px
+    line-height: 24px
+    margin-bottom: 10px
+    color: #232323
+.wrap-icon
+  position: absolute
+  left: 10px
+  top: 50%
+  margin-top: -11px
+  width: 25px
+  height: 25px
+  i
+    font-size: 21px
+
+@keyframes trans
+  0%
+    opacity: 0
+    width: 0
+  100%
+    opacity: 1
+    width: 340px
