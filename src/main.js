@@ -7,6 +7,8 @@ import {joinCom} from './components/index'
 import router from '../router/index'
 import store from './store/index'
 import {connectSocket} from '../service/socket'
+import {notices} from './components/plugins/notice/index'
+import {popOver} from './components/plugins/pop/index'
 import '../sass/index.sass'
 
 Vue.config.debug = true
@@ -26,4 +28,14 @@ let app = new Vue({
   }
 })
 
-export default app
+for (let notice in notices) {
+  Vue.prototype['_' + notice] = (propData) => {
+    notices[notice](propData, Vue)
+  }
+}
+
+Vue.prototype.$_popOver = (propData) => {
+    popOver(propData, Vue)
+}
+
+export {Vue}
