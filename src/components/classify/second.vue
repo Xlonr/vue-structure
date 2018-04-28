@@ -1,6 +1,7 @@
 <template>
   <div>
-    <span>This is the second view.</span>
+    <span @click="nextComp">This is the second view.</span>
+    <my-component v-model="msg"></my-component>
   </div>
 </template>
 
@@ -8,7 +9,13 @@
   export default {
     data () {
       return {
-        num: 10
+        num: 10,
+        msg: '111222'
+      }
+    },
+    methods: {
+      nextComp () {
+        console.log(this.msg)
       }
     }
   }
