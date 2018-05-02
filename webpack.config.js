@@ -1,5 +1,5 @@
 /**
- * Created by HFJY on 2017/9/10.
+ * Created by xm on 2017/9/10.
  */
 const path = require('path')
 const webpack = require('webpack')
@@ -14,6 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: './',
+    // 所有通过相对路径获取到的资源都会打到./目录下
     filename: '[name].js'
     // chunkFilename: '[id].js'
   },
@@ -35,7 +36,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: ['babel-loader'],
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.vue$/,
@@ -44,15 +45,18 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
+        // loader: 'url-loader?limit=8192&name=asset',
+        // options: {
+        //   name: '[name].[ext]?[hash]'
+        // }
+        use: [{
+          loader: 'file-loader?limit=8192&name=assets/[name].[hash:4].[ext]'
+        }]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin("app.css"),
+    new ExtractTextPlugin("css/app.css"),
     new HtmlWebpackPlugin({
       filename: './index.html',
       template: path.resolve(__dirname,  './src/index.html'),

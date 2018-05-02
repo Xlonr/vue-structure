@@ -2,6 +2,7 @@
   <div>
     <span @click="nextComp">This is the second view.</span>
     <my-component v-model="msg"></my-component>
+    <div class="imt"></div>
   </div>
 </template>
 
