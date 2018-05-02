@@ -50,13 +50,13 @@ module.exports = {
         //   name: '[name].[ext]?[hash]'
         // }
         use: [{
-          loader: 'file-loader?limit=8192&name=assets/[name].[hash:4].[ext]'
+          loader: 'file-loader?limit=8192&name=assets/[name].[ext]'
         }]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin("app.css"),
     new HtmlWebpackPlugin({
       filename: './index.html',
       template: path.resolve(__dirname,  './src/index.html'),
