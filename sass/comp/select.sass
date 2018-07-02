@@ -1,0 +1,63 @@
+
+._select
+  width: $def_select_width + px
+  height: 35px
+  border: 1px solid $def_border_col
+  background: #fff
+  line-height: 35px
+  //padding: 0 10px 0 10px
+  border-radius: 3px
+  &:focus
+    $def_border_col: #2a86ff
+    border: 1px solid $def_border_col
+  &::-webkit-scrollbar
+    display: none
+  .text_area
+    width: 100%
+    height: 100%
+    overflow: hidden
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    border-radius: 3px
+    ._select_cont
+      height: 100%
+      min-width: 100%
+      display: inline-block
+      cursor: text
+      padding: 0 10px 0 10px
+      box-sizing: border-box
+      overflow-y: hidden
+      &:focus
+        outline: none
+        border: 0
+  ._option
+    background: #ffffff
+    position: absolute
+    width: $def_select_width + px
+    margin-top: 8px
+    border-radius: 4px
+    max-height: $def_option_max_height
+    overflow-y: auto
+    //@include is_show($def_border_col)
+    &::-webkit-scrollbar
+      width: 8px
+      -webkit-border-radius: 10px
+      -moz-border-radius: 10px
+      border-radius: 10px
+    &::-webkit-scrollbar-thumb
+      background: #455692
+      -webkit-border-radius: 10px
+      -moz-border-radius: 10px
+      border-radius: 10px
+    ._option_list
+      padding: 5px
+      ._option_item
+        display: block
+        cursor: pointer
+        padding: 3px 10px
+        box-sizing: border-box
+        -webkit-border-radius: 4px
+        -moz-border-radius: 4px
+        border-radius: 4px
+        &:hover
+          background: #ccc

@@ -17,8 +17,6 @@ connectSocket()
 
 joinCom(Vue)
 
-// console.log(Comp)
-
 let app = new Vue({
   el: '#app',
   router,
@@ -37,5 +35,7 @@ for (let notice in notices) {
 Vue.prototype.$_popOver = (propData) => {
     popOver(propData, Vue)
 }
+
+window.app = app
 
 export {Vue}

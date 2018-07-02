@@ -12,8 +12,8 @@ module.exports = {
     vendors: ['vue', 'vue-router', 'vuex']
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: './',
+    path: path.resolve(__dirname, 'dist'),
+    // publicPath: 'dist',
     // 所有通过相对路径获取到的资源都会打到./目录下
     filename: '[name].js'
     // chunkFilename: '[id].js'
@@ -40,7 +40,12 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        use: ['vue-loader'],
+        use: [{
+          loader: "vue-loader",
+          options: {
+            hotReload: true
+          }
+        }],
         exclude: /node_modules/
       },
       {
@@ -57,19 +62,32 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("app.css"),
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     postcss: [
+    //         require('autoprefixer') // 样式加入各个浏览器的前缀
+    //     ]
+    //   }
+    // }),
     new HtmlWebpackPlugin({
       filename: './index.html',
       template: path.resolve(__dirname,  './src/index.html'),
-      inject: true
+      inject: true,   // script引用放在body之后  true、body、head
+      minify: {
+        removeAttributeQuotes: true   // html压缩去除引号
+      }
     })
   ],
   devServer: {
-    contentBase: "./dist",
-    historyApiFallback: true,
+    contentBase: "/",
+    historyApiFallback: false,
+    hot: true,
     inline: true,
-    port: "7080"
+    port: "7070"
   }
 }
+
+// process.env.NODE_ENV = 'production'
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'

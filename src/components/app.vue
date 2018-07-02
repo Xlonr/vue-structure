@@ -37,7 +37,6 @@
       }
     },
     created () {
-      console.log(this.count, 11111111)
     }
   }
 </script>

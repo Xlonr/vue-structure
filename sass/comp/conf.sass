@@ -1,0 +1,15 @@
+$def_width: 80
+$def_height: 35
+$def_input_height: 30
+$def_select_width: 180
+$def_border_col: #cccccc
+$def_option_max_height: 200px
+
+@mixin def_change ($c)
+  $def_border_col: $c
+
+@mixin is_show ($color)
+  @if $color == $def_border_col
+    display: none
+  @else
+    display: block
