@@ -4,6 +4,9 @@ $def_input_height: 30
 $def_select_width: 180
 $def_border_col: #cccccc
 $def_option_max_height: 200px
+$def_radio_width: 10px
+$def_checkbox_width: 10px
+$def_calendar_picker_size: 260px
 
 @mixin def_change ($c)
   $def_border_col: $c
@@ -13,3 +16,8 @@ $def_option_max_height: 200px
     display: none
   @else
     display: block
+
+@mixin radius ($rad)
+  -webkit-border-radius: $rad
+  -moz-border-radius: $rad
+  border-radius: $rad

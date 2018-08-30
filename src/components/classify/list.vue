@@ -16,12 +16,33 @@
     <div class="col">Some input</div>
     <div class="col">
       <x_input input_text="输入内容..." input_title="标题" :disabled="true"></x_input>
-      <x_input class="edge" input_text="输入内容..." input_title="标题" title_direct="right"></x_input>
+      <x_input class="edge" v-model="value" input_text="输入内容..." input_title="标题" title_direct="right"></x_input>
+      {{value}}
     </div>
-    <div class="col">... select</div>
+    <div class="col">Some select</div>
     <div class="row">
       <selects :dfCont="dfCont" @input="changeValue"></selects>
       <selects :dfCont="dfCont" @input="changeValue" :isClick="true"></selects>
+    </div>
+    <div class="col">
+      <radios :isChecked="isChecked" @input="val => isChecked = val" :isToggle="true"></radios>
+    </div>
+    <div class="row">
+      <radio-group class="" :checkIndex="checkIndex" :options="radioConts" @input="index => checkIndex = index"></radio-group>
+    </div>
+    <div class="row">
+      <check-box></check-box>
+    </div>
+    <div class="row">
+      <check-box-group></check-box-group>
+    </div>
+    <div class="col">
+      <!--<span>{{ dt }}</span>-->
+      <picker @dateTimes="dateTimes" :isHover="Boolean(true)">
+        <span slot="slot-cont">
+          <x_input input_text="选择日期" :value="dt"></x_input>
+        </span>
+      </picker>
     </div>
   </div>
 </template>
@@ -33,7 +54,12 @@
       return {
         msg: 'this is a message!',
         itemType: false,
-        dfCont: '地点'
+        dfCont: '地点',
+        value: '',
+        isChecked: true,
+        checkIndex: 1,
+        radioConts: ['item1', 'item2', 'item3', 'item4'],
+        dt: ''
       }
     },
     methods: {
@@ -94,7 +120,9 @@
       },
       changeValue (val) {
         this.dfCont = val
-        console.log(this.dfCont)
+      },
+      dateTimes (dt) {
+        this.dt = dt
       }
     }
   }

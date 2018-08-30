@@ -37,5 +37,6 @@ Vue.prototype.$_popOver = (propData) => {
 }
 
 window.app = app
+window.vm = Vue
 
 export {Vue}

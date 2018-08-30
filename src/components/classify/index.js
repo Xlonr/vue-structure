@@ -7,6 +7,11 @@ import Second from './second.vue'
 import Btn from './Btn.vue'
 import x_input from './x_input.vue'
 import Selects from './Selects.vue'
+import Radios from './Radios.vue'
+import RadioGroup from './RadioGroup.vue'
+import CheckBox from './CheckBox.vue'
+import CheckBoxGroup from './CheckBoxGroup.vue'
+import Picker from './Picker.vue'
 
 export {
   Board,
@@ -14,5 +19,10 @@ export {
   Second,
   Btn,
   x_input,
-  Selects
+  Selects,
+  Radios,
+  RadioGroup,
+  CheckBox,
+  CheckBoxGroup,
+  Picker
 }

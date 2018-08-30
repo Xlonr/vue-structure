@@ -1,3 +1,5 @@
+import {directive} from "../../service/index"
+
 export function updateCount ({commit}, status) {
   return new Promise((resolve, reject) => {
     if (status < 4) {
@@ -7,4 +9,8 @@ export function updateCount ({commit}, status) {
       return reject(e)
     }
   })
+}
+
+export function socketMessage (_, cont) {
+  directive.send(cont)
 }

@@ -3,30 +3,35 @@
   width: $def_width + px
   height: $def_height + px
   background: #ffffff
-  -webkit-border-radius: 5px
-  -moz-border-radius: 5px
-  border-radius: 5px
+  @include radius(5px)
   text-align: center
   cursor: pointer
   font-size: 14px
+  border: 2px solid #ccc
   line-height: $def_height + px
   font-family: "Bodoni MT Condensed"
   &:hover
-    background: #346bff
+    background: #ccc
 .is_per
   background: #346bff
+  border: 2px solid #346bff
   color: #ffffff
   &:hover
+    border: 2px solid #4683ff
     background: #4683ff
 
 .is_error
   background: #ff0000
+  border: 2px solid #ff0000
   color: #ffffff
   &:hover
+    border: 2px solid #ff3b35
     background: #ff3b35
 
 .is_warn
+  border: 2px solid #ffd934
   background: #ffd934
   color: #ffffff
   &:hover
+    border: 2px solid #ffe347
     background: #ffe347
