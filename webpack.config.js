@@ -5,6 +5,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin') //css样式从js文件中分离出来
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: {
@@ -21,7 +22,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.sass'],
     alias: {
-      'vue': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   module: {
@@ -40,12 +41,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        use: [{
-          loader: "vue-loader",
-          options: {
-            hotReload: true
-          }
-        }],
+        loader: "vue-loader",
         exclude: /node_modules/
       },
       {
@@ -76,7 +72,8 @@ module.exports = {
       minify: {
         removeAttributeQuotes: true   // html压缩去除引号
       }
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   devServer: {
     contentBase: "/",
