@@ -18,8 +18,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/second',
-      component: Second
+      path: '/',
+      component: Second,
+      redirect: '/vBtn'
     },
     {
       path: '/vBtn',

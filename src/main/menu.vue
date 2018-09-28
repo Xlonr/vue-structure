@@ -22,7 +22,7 @@
           {text: '输入框 (input)', path: '/vInput'},
           {text: '通知 (notice)', path: '/vNotice'}
         ],
-        activeIndex: ''
+        activeIndex: 0
       }
     },
     computed: {
