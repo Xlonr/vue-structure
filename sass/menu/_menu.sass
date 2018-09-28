@@ -1,0 +1,57 @@
+$def_menu_left_width: 200px
+
+.menu
+  width: $def_menu_left_width
+  .title
+    width: 100%
+    text-align: center
+    display: block
+    height: $def_menu_left_width / 5
+    line-height: $def_menu_left_width / 5
+  .menu_list
+    width: 100%
+    padding: 5px 10px
+    box-sizing: border-box
+    box-shadow: 0px 1px 7px 0px #ccc
+    overflow: hidden
+    @include radius(3px)
+    .menu_item
+      height: $def_menu_left_width / 5
+      line-height: $def_menu_left_width / 5
+      text-decoration: none
+      display: block
+      border-bottom: 1px solid #dddddd
+      cursor: pointer
+      position: relative
+      &:last-child
+        border-bottom: 0px
+      &:hover
+        animation: nav_hover 1s   // 是否重复播放动画 infinite
+        animation-fill-mode: forwards
+        @include radius(3px)
+      &.active
+        background: #4c8dff
+        padding-left: 5px
+        font-size: 15px
+        color: #ffffff
+        @include radius(3px)
+        &::after
+          content: ''
+          width: $def_menu_left_width / 5 / 4
+          height: $def_menu_left_width / 5 / 4
+          background: #4c8dff
+          position: absolute
+          left: -$def_menu_left_width / 5 / 4 - 4px
+          top: 0
+          bottom: 0
+          transform: rotate(45deg)
+          margin: auto
+
+@keyframes nav_hover
+  0%
+    background: transparent
+  100%
+    background: #4c8dff
+    padding-left: 5px
+    font-size: 15px
+    color: #ffffff

@@ -84,6 +84,7 @@ module.exports = {
   }
 }
 
+console.log('env:', process.env.NODE_ENV)
 
 if (process.env.NODE_ENV.trim() === 'development') {
   module.exports.devtool = 'source-map'
@@ -91,10 +92,10 @@ if (process.env.NODE_ENV.trim() === 'development') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: 'development'
+        NODE_ENV: '"development"'
       }
     })
-    // config.optimization.minimize({
+    // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false
     //   }

@@ -2,9 +2,11 @@
  * 组件
  */
 import * as classify from './classify/index'
+import * as main from '../main/index'
 
 let components = {
-  ...classify
+  ...classify,
+  ...main
 }
 
 export function joinCom (Vue) {

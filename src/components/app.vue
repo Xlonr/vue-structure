@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <span>{{count}}</span>
-    <router-link to="/second" @click.native="sends">{{text}}</router-link>
-    <div class="rightView">
-      <router-view></router-view>
+  <div class="content">
+    <div class="header">The custom component library</div>
+    <!--<span>{{count}}</span>-->
+    <!--<router-link to="/second" @click.native="sends">{{text}}</router-link>-->
+    <div class="midden-cont">
+      <Menu></Menu>
+      <div class="rightView">
+        <router-view></router-view>
+      </div>
     </div>
-    <list></list>
+    <!--<list></list>-->
   </div>
 </template>
 
