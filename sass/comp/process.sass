@@ -1,0 +1,55 @@
+._process
+  width: 100%
+  display: flex
+  align-items: center
+  .process_line
+    flex: 1
+    height: $def_process_height
+    box-shadow: 0px 1px 7px 2px #48b0e1
+    position: relative
+    @include radius(10px)
+    .process_real_line
+      //width: 50%
+      height: 100%
+      position: absolute
+      left: 0
+      background: #236dff
+      @include radius(10px)
+      z-index: -1
+    .drag_pos
+      width: $def_process_height + $def_process_height / 2
+      height: $def_process_height + $def_process_height / 2
+      box-shadow: 0px 1px 7px 2px #48b0e1
+      background: -webkit-linear-gradient(left, #2a86ff, #4d9bff)
+      //left: 0
+      top: 0
+      bottom: 0
+      margin: auto
+      position: absolute
+      cursor: pointer
+      @include radius(100px)
+      @include def_user_select(none)
+      @include def_user_drag(none)
+      z-index: 12
+      &:hover
+        @include def_transform(scale(1.5))
+        @include def_transition(all, 1s)
+    .icon
+      width: $def_process_height * 2
+      height: $def_process_height * 2
+      font-size: 21px
+      top: 0
+      bottom: 0
+      margin: auto
+      position: absolute
+      cursor: pointer
+      z-index: 12
+      //box-shadow: 0px 1px 7px 2px #48b0e1
+      color: #2a86ff
+      @include def_user_select(none)
+      @include def_user_drag(none)
+      &::before
+        position: absolute
+  .process_time
+    width: 60px
+    text-align: center

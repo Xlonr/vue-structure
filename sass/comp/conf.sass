@@ -7,6 +7,7 @@ $def_option_max_height: 200px
 $def_radio_width: 10px
 $def_checkbox_width: 10px
 $def_calendar_picker_size: 260px
+$def_process_height: 10px
 
 @mixin def_change ($c)
   $def_border_col: $c
@@ -21,3 +22,26 @@ $def_calendar_picker_size: 260px
   -webkit-border-radius: $rad
   -moz-border-radius: $rad
   border-radius: $rad
+  
+@mixin def_transform ($cont)
+  -webkit-transform: $cont
+  -moz-transform: $cont
+  -ms-transform: $cont
+  -o-transform: $cont
+  transform: $cont
+
+@mixin def_transition ($prop, $time)
+  -webkit-transition: $prop $time
+  -moz-transition: $prop $time
+  -ms-transition: $prop $time
+  -o-transition: $prop $time
+  transition: $prop $time
+  
+@mixin def_user_select ($type)
+  -webkit-user-select: $type
+  -moz-user-select: $type
+  -ms-user-select: $type
+  user-select: $type
+
+@mixin def_user_drag ($type)
+  -webkit-user-drag: $type

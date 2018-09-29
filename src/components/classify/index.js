@@ -12,6 +12,7 @@ import RadioGroup from './RadioGroup'
 import CheckBox from './CheckBox'
 import CheckBoxGroup from './CheckBoxGroup'
 import Picker from './Picker'
+import Process from './Process'
 
 export {
   Board,
@@ -24,5 +25,6 @@ export {
   RadioGroup,
   CheckBox,
   CheckBoxGroup,
-  Picker
+  Picker,
+  Process
 }

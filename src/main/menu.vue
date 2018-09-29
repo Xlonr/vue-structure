@@ -20,7 +20,8 @@
           {text: '单选 (radio)', path: '/vRadio'},
           {text: '下拉框 (select)', path: '/vSelect'},
           {text: '输入框 (input)', path: '/vInput'},
-          {text: '通知 (notice)', path: '/vNotice'}
+          {text: '通知 (notice)', path: '/vNotice'},
+          {text: '进度 (process)', path: '/vProcess'}
         ],
         activeIndex: 0
       }

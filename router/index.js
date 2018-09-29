@@ -12,6 +12,7 @@ import vPicker from '../src/view/v_picker.vue'
 import vRadio from '../src/view/v_radio.vue'
 import vSelect from '../src/view/v_select.vue'
 import vNotice from '../src/view/v_notice.vue'
+import vProcess from '../src/view/v_process.vue'
 
 Vue.use(Router)
 
@@ -19,7 +20,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Second,
+      component: vBtn,
       redirect: '/vBtn'
     },
     {
@@ -49,6 +50,10 @@ export default new Router({
     {
       path: '/vNotice',
       component: vNotice
+    },
+    {
+      path: '/vProcess',
+      component: vProcess
     }
   ]
 })
