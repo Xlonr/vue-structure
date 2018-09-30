@@ -2,6 +2,9 @@
   width: 100%
   display: flex
   align-items: center
+  .process_time
+    width: 60px
+    text-align: center
   .process_line
     flex: 1
     height: $def_process_height
@@ -50,6 +53,7 @@
       @include def_user_drag(none)
       &::before
         position: absolute
-  .process_time
-    width: 60px
-    text-align: center
+      &:hover
+        @include def_transform(scale(1.5))
+        @include def_transition(all, 1s)
+

@@ -21,7 +21,8 @@
           {text: '下拉框 (select)', path: '/vSelect'},
           {text: '输入框 (input)', path: '/vInput'},
           {text: '通知 (notice)', path: '/vNotice'},
-          {text: '进度 (process)', path: '/vProcess'}
+          {text: '进度 (process)', path: '/vProcess'},
+          {text: '时钟 (clock)', path: '/vClock'}
         ],
         activeIndex: 0
       }

@@ -13,6 +13,8 @@ import CheckBox from './CheckBox'
 import CheckBoxGroup from './CheckBoxGroup'
 import Picker from './Picker'
 import Process from './Process'
+import ClockTime from './clock/ClockTime'
+import CalendarTime from './clock/CalendarTime'
 
 export {
   Board,
@@ -26,5 +28,7 @@ export {
   CheckBox,
   CheckBoxGroup,
   Picker,
-  Process
+  Process,
+  ClockTime,
+  CalendarTime
 }

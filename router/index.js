@@ -13,6 +13,7 @@ import vRadio from '../src/view/v_radio.vue'
 import vSelect from '../src/view/v_select.vue'
 import vNotice from '../src/view/v_notice.vue'
 import vProcess from '../src/view/v_process.vue'
+import vClock from '../src/view/v_clock.vue'
 
 Vue.use(Router)
 
@@ -54,6 +55,10 @@ export default new Router({
     {
       path: '/vProcess',
       component: vProcess
+    },
+    {
+      path: '/vClock',
+      component: vClock
     }
   ]
 })

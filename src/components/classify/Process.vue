@@ -5,7 +5,7 @@
       <div :class="['icon', 'iconfont', iconName, posClass]" v-if="useIcon" :style="{'left': `${pLeft - 10}px`}"></div>
       <div :class="['drag_pos', posClass]" v-else :style="{'left': `${pLeft - 10}px`}"></div>
     </div>
-    <span class="process_time" v-show="isAuto && isStart" v-text="changeTime"></span>
+    <div class="process_time" v-show="isAuto && isStart" v-text="changeTime"></div>
   </div>
 </template>
 
