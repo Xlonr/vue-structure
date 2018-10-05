@@ -42,7 +42,8 @@
   "scripts": {
     "build": "set NODE_ENV=development && webpack -p --mode=development --display-modules --display-chunks --config webpack.config.js",
     "dev": "set NODE_ENV=development && webpack-dev-server --mode=development --inline --hot --open --content-base dist",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "conf": "npm i && npm run build"
   },
   "author": "xm",
   "license": "ISC",
