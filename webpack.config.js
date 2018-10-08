@@ -86,7 +86,7 @@ module.exports = {
 
 console.log('env:', process.env.NODE_ENV)
 
-if (process.env.NODE_ENV.trim() === 'development') {
+if (process.env.NODE_ENV && process.env.NODE_ENV.trim() === 'development') {
   module.exports.devtool = 'source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
