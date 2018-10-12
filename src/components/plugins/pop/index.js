@@ -1,4 +1,4 @@
-import pop from './pop.vue'
+import pop from './Pop.vue'
 function popComponent (propsData, Vue) {
   const popComponent = Vue.extend(pop)
   return new popComponent({

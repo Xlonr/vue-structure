@@ -15,8 +15,8 @@
     </div>
     <div class="col">Some input</div>
     <div class="col">
-      <x_input input_text="输入内容..." input_title="标题" :disabled="true"></x_input>
-      <x_input class="edge" v-model="value" input_text="输入内容..." input_title="标题" title_direct="right"></x_input>
+      <input-cont input_text="输入内容..." input_title="标题" :disabled="true"></input-cont>
+      <input-cont class="edge" v-model="value" input_text="输入内容..." input_title="标题" title_direct="right"></input-cont>
       {{value}}
     </div>
     <div class="col">Some select</div>

@@ -1,11 +1,10 @@
 /*
  * 组件
  */
-import Board from './board'
-import List from './list'
-import Second from './second'
+import Board from './Board'
+import List from './List'
 import Btn from './Btn'
-import x_input from './x_input'
+import InputCont from './InputCont'
 import Selects from './Selects'
 import Radios from './Radios'
 import RadioGroup from './RadioGroup'
@@ -19,9 +18,8 @@ import CalendarTime from './clock/CalendarTime'
 export {
   Board,
   List,
-  Second,
   Btn,
-  x_input,
+  InputCont,
   Selects,
   Radios,
   RadioGroup,

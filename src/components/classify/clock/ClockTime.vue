@@ -50,10 +50,12 @@
       nowTime (date) {
         this.minutes = `0${date.getMinutes()}`.slice(-2)
         this.seconds = `0${date.getSeconds()}`.slice(-2)
-        this.nextSeconds = `0${date.getSeconds() + 1}`.slice(-2)
-        if (+this.nextSeconds === 60) {
-          this.nextSeconds = '00'
-        }
+        this.$nextTick(() => {
+          this.nextSeconds = `0${date.getSeconds() + 1}`.slice(-2)
+          if (+this.nextSeconds === 60) {
+              this.nextSeconds = '00'
+          }
+        })
       }
     }
   }
