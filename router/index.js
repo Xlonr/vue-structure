@@ -4,7 +4,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AppPage from '../src/components/app.vue'
-import Second from '../src/components/classify/second.vue'
+// import Second from '../src/components/classify/second.vue'
 import vBtn from '../src/view/v_btn.vue'
 import vCheckBox from '../src/view/v_checkBox.vue'
 import vInput from '../src/view/v_input.vue'
