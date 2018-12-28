@@ -1,13 +1,21 @@
 
 .is_small
-  width: $def_width * (1 - 0.2) + px
-  height: $def_height * (1 - 0.2) + px
-  line-height: $def_height * (1 - 0.2) + px
+  padding: 5px 10px
+  font-size: 12px
+  //line-height: $def_height * (1 - 0.2) + px
+  &.iconfont
+    font-size: 12px
+    &::before
+      margin-right: 3px
 
 .is_larger
-  width: $def_width * (1 + 0.2) + px
-  height: $def_height * (1 + 0.2) + px
-  line-height: $def_height * (1 + 0.2) + px
+  padding: 7px 20px
+  font-size: 18px
+  //line-height: $def_height * (1 + 0.2) + px
+  &.iconfont
+    font-size: 18px
+    &::before
+      margin-right: 3px
 
 .is_disabled
   pointer-events: none

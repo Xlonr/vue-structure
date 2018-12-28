@@ -3,6 +3,7 @@
  */
 import Vue from 'vue'
 import App from './components/app.vue'
+import {tipComponent} from './components/plugins/tip/index'
 import {joinCom} from './components/index'
 import router from '../router/index'
 import store from './store/index'
@@ -15,6 +16,7 @@ Vue.config.debug = true
 
 connectSocket()
 
+tipComponent(Vue)
 joinCom(Vue)
 
 let app = new Vue({

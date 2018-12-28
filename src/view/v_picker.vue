@@ -4,7 +4,7 @@
       <!--<span>{{ dt }}</span>-->
       <picker @dateTimes="dateTimes" :isHover="Boolean(true)">
         <span slot="slot-cont">
-          <x_input class="picker_calculate_num" input_text="选择日期" :value="dt"></x_input>
+          <input-cont class="picker_calculate_num" input_text="选择日期" :value="dt"></input-cont>
         </span>
       </picker>
     </div>

@@ -1,37 +1,105 @@
+$def_btn_font_color: #ffffff
+// 默认色
+$def_btn_promise: #346bff
+$def_btn_promise_hover: #4683ff
+// 危险
+$def_btn_error: #ff0000
+$def_btn_error_hover: #ff3b35
+// 警告
+$def_btn_warn: #ffd934
+$def_btn_warn_hover: #ffe347
+// 成功
+$def_btn_success: #67c23a
+$def_btn_success_hover: #85ce61
+
 
 ._btn
-  width: $def_width + px
-  height: $def_height + px
+  padding: 7px 15px
   background: #ffffff
   @include radius(5px)
   text-align: center
   cursor: pointer
   font-size: 14px
-  border: 2px solid #ccc
-  line-height: $def_height + px
+  outline: none
+  box-sizing: border-box
+  border: 1px solid #ccc
+  position: relative
   font-family: "Bodoni MT Condensed"
   &:hover
     background: #ccc
+  &._fillet
+    @include radius(50px)
+  &._circle
+    width: $def_circle_size + px
+    height: $def_circle_size + px
+    font-size: $def_circle_size / 2 + px
+    padding: 0
+    line-height: $def_circle_size + px
+    @include radius(100%)
+    &.is_small
+      width: $def_circle_size * (1 - 0.2) + px
+      height: $def_circle_size * (1 - 0.2) + px
+      line-height: $def_circle_size * (1 - 0.2) + px
+      font-size: $def_circle_size / 3 + px
+      &.iconfont
+        &::before
+          margin-right: 0px
+    &.is_larger
+      width: $def_circle_size * (1 + 0.2) + px
+      height: $def_circle_size * (1 + 0.2) + px
+      line-height: $def_circle_size * (1 + 0.2) + px
+      font-size: $def_circle_size * (1 - 0.2) + px
+      &.iconfont
+        &::before
+          margin-right: 0px
+  &.iconfont
+    &::before
+      margin-right: 3px
 .is_per
-  background: #346bff
-  border: 2px solid #346bff
-  color: #ffffff
+  background: $def_btn_promise
+  border: 1px solid $def_btn_promise
+  color: $def_btn_font_color
   &:hover
-    border: 2px solid #4683ff
-    background: #4683ff
+    border: 1px solid $def_btn_promise_hover
+    background: $def_btn_promise_hover
 
 .is_error
-  background: #ff0000
-  border: 2px solid #ff0000
-  color: #ffffff
+  background: $def_btn_error
+  border: 1px solid $def_btn_error
+  color: $def_btn_font_color
   &:hover
-    border: 2px solid #ff3b35
-    background: #ff3b35
+    border: 1px solid $def_btn_error_hover
+    background: $def_btn_error_hover
 
 .is_warn
-  border: 2px solid #ffd934
-  background: #ffd934
-  color: #ffffff
+  border: 1px solid $def_btn_warn
+  background: $def_btn_warn
+  color: $def_btn_font_color
   &:hover
-    border: 2px solid #ffe347
-    background: #ffe347
+    border: 1px solid $def_btn_warn_hover
+    background: $def_btn_warn_hover
+    
+.is_success
+  background: $def_btn_success
+  border: 1px solid $def_btn_success
+  color: $def_btn_font_color
+  &:hover
+    background: $def_btn_success_hover
+    border: 1px solid $def_btn_success_hover
+
+._btn_text
+  padding: 5px 10px
+  text-align: center
+  background: transparent
+  display: inline-block
+  cursor: pointer
+  box-sizing: border-box
+  border-bottom: 2px solid transparent
+  position: relative
+  @include def_transition(border-bottom, 1s)
+  &:hover
+    border-bottom: 2px solid $def_btn_promise
+    color: $def_btn_promise
+  &.is_active
+    border-bottom: 2px solid $def_btn_promise
+    color: $def_btn_promise
