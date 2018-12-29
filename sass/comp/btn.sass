@@ -24,6 +24,7 @@ $def_btn_success_hover: #85ce61
   box-sizing: border-box
   border: 1px solid #ccc
   position: relative
+  @include def_user_select(none)
   font-family: "Bodoni MT Condensed"
   &:hover
     background: #ccc
@@ -97,6 +98,7 @@ $def_btn_success_hover: #85ce61
   border-bottom: 2px solid transparent
   position: relative
   @include def_transition(border-bottom, 1s)
+  @include def_user_select(none)
   &:hover
     border-bottom: 2px solid $def_btn_promise
     color: $def_btn_promise

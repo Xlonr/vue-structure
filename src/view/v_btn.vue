@@ -39,7 +39,7 @@
         <btn type="text">标题2</btn>
         <btn type="text">标题3</btn>
         <btn type="text">标题4</btn>
-        <btn type="text" tip="提示内容">标题5<tip tipContent="提示内容"></tip></btn>
+        <btn type="text">标题5<tip tipContent="提示内容"></tip></btn>
       </div>
     </div>
   </div>

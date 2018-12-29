@@ -1,8 +1,8 @@
 ._tip
+  left: 50%
   position: absolute
   min-width: 80px
   max-width: 120px
-  top: 0
   background: rgba(0, 0, 0, 1)
   padding: 5px 10px
   -webkit-border-radius: 5px
@@ -10,12 +10,25 @@
   border-radius: 5px
   color: #ffffff
   font-size: 14px
-  &::before
-    content: ''
-    width: 10px
-    height: 10px
-    background-color: rgba(0, 0, 0, 1)
-    position: absolute
-    top: -5px
-    left: 50%
-    transform: translate(-50%, 0) rotate(45deg)
+  transform: translate(-50%, 0)
+  ._tip-top
+    &::before
+      content: ''
+      width: 10px
+      height: 10px
+      background-color: rgba(0, 0, 0, 1)
+      position: absolute
+      top: -5px
+      left: 50%
+      transform: translate(-50%, 0) rotate(45deg)
+
+  ._tip-bottom
+    &::before
+      content: ''
+      width: 10px
+      height: 10px
+      background-color: rgba(0, 0, 0, 1)
+      position: absolute
+      bottom: -5px
+      left: 50%
+      transform: translate(-50%, 0) rotate(45deg)
