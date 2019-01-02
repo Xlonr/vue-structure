@@ -53,8 +53,15 @@ module.exports = {
         use: [{
           loader: 'file-loader?limit=8192&name=static/[name].[ext]'
         }]
+      },
+      {
+        test: /\.md$/,
+        use: ['html-loader', 'markdown-loader'],
+        // options: {
+        //   name: utils.assetsPath('docs/[name].[ext]')
+        // }
       }
-    ]
+  ]
   },
   plugins: [
     new ExtractTextPlugin("app.css"),

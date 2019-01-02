@@ -1,8 +1,9 @@
 .pop
   position: absolute
-  width: 210px
-  height: 150px
+  min-width: 145px
+  //height: 150px
   padding: 10px 15px
+  z-index: 10
   box-sizing: border-box
   background: #ffffff
   -webkit-border-radius: 5px
@@ -31,12 +32,12 @@
     transform: translate(-50%, 0)
 
   &.is_right
-    left: 100%
+    left: 115%
     top: 50%
     transform: translate(0, -50%)
 
   &.is_left
-    right: 100%
+    right: 115%
     top: 50%
     transform: translate(0, -50%)
 

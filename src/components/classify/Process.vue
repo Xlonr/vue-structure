@@ -1,11 +1,11 @@
 <template>
   <div class="_process">
     <div class="process_line">
-      <div class="process_real_line" :style="{'width': `${pLeft}px`}"></div>
-      <div :class="['icon', 'iconfont', iconName, posClass]" v-if="useIcon" :style="{'left': `${pLeft - 10}px`}"></div>
-      <div :class="['drag_pos', posClass]" v-else :style="{'left': `${pLeft - 10}px`}"></div>
+      <div :class="['process_real_line', isAuto ? 'process_transform' : '']" :style="{'width': `${pLeft}px`}"></div>
+      <div :class="['icon', 'iconfont', iconName, posClass, {'process_transform': isAuto}]" v-if="useIcon" :style="{'left': `${pLeft - 10}px`}"></div>
+      <div :class="['drag_pos', posClass, {'process_transform': isAuto}]" v-else :style="{'left': `${pLeft - 10}px`}"></div>
     </div>
-    <div class="process_time" v-show="isAuto && isStart" v-text="changeTime"></div>
+    <div class="process_time" v-if="isAuto" v-text="changeTime"></div>
   </div>
 </template>
 
@@ -56,8 +56,7 @@
         currentX: 0,
         pLeft: 100,
         lef: 100,
-        maxWidth: 0,
-        isStart: false
+        maxWidth: 0
       }
     },
     created () {
@@ -96,13 +95,9 @@
       if (this.isDrag) {
         this.el.addEventListener('mousedown', this.enter, false)
       }
-      if (this.isAuto) {
+      if (this.isAuto && this.allTime && this.restTime) {
         let time_b = document.querySelector('.process_time')
         if (time_b) this.maxWidth -= time_b.offsetWidth
-        console.log(time_b)
-        if (this.allTime && this.restTime) {
-          this.isStart = true
-        }
       }
     }
   }

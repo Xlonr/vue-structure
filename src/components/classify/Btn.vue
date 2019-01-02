@@ -45,10 +45,6 @@
     },
     beforeCreate () {
     },
-    created () {
-//      let attrs = e.$attrs
-      console.log(this.$el)
-    },
     data () {
       return {
         defClass: ['_btn', 'inline_ele']

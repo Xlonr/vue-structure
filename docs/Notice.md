@@ -1,3 +1,14 @@
+### 全局方法（气泡提示） $_popOver
+#### direction（方向）
+&emsp;is_top:      气泡向上
+&emsp;is_right:    气泡向右
+&emsp;is_bottom:   气泡向下
+&emsp;is_left:     气泡向左
+
+### code
+<table class="_table"><tr><td bgcolor=#DCDCDC>
+
+```
 <template>
   <div>
     <btn o_class="tip-lib" @click.native.self="showTip">提示框</btn>
@@ -8,8 +19,6 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
 
   export default {
     data () {
@@ -21,7 +30,7 @@
         this.$_popOver({
           popContent: '弹出提示内容',
           direction: 'is_top',
-          autoClose: true,
+          autoClose: false,
           name: el.target,
           closable: false
         })
@@ -58,3 +67,5 @@
     }
   }
 </script>
+```
+</td></tr></table>

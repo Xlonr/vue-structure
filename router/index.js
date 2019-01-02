@@ -26,38 +26,47 @@ export default new Router({
     },
     {
       path: '/vBtn',
+      name: 'btn',
       component: vBtn
     },
     {
       path: '/vCheckBox',
+      name: 'checkBox',
       component: vCheckBox
     },
     {
       path: '/vInput',
+      name: 'input',
       component: vInput
     },
     {
       path: '/vPicker',
+      name: 'picker',
       component: vPicker
     },
     {
       path: '/vRadio',
+      name: 'radio',
       component: vRadio
     },
     {
       path: '/vSelect',
+      name: 'select',
       component: vSelect
     },
     {
       path: '/vNotice',
+      name: 'notice',
       component: vNotice
     },
     {
       path: '/vProcess',
+      name: 'process',
       component: vProcess
     },
     {
       path: '/vClock',
+      name: 'clock',
       component: vClock
     }
   ]

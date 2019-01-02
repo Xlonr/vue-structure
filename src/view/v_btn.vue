@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>you can click this!</div>
-    <div class="view_cont">
       <div class="col">
         <btn class="is_small" @click="showItem">按钮</btn>
         <btn class="is_per is_small" @click="showItem">按钮</btn>
@@ -28,10 +27,10 @@
       </div>
       <div class="col">
         <btn icon="icon-sousuo" class="is_small" type="circle" @click="showItem"></btn>
-        <btn icon="icon-sousuo" class="is_per is_small" type="circle" @click="showItem"></btn>
-        <btn icon="icon-sousuo" class="is_warn" type="circle" @click="showItem1"></btn>
-        <btn icon="icon-sousuo" class="is_success" type="circle" @click="showItem1"></btn>
-        <btn icon="icon-sousuo" class="is_warn is_disabled" type="circle" @click="showItem1"></btn>
+        <btn icon="icon-dingdan" class="is_per is_small" type="circle" @click="showItem"></btn>
+        <btn icon="icon-yunduanxiazai" class="is_warn" type="circle" @click="showItem1"></btn>
+        <btn icon="icon-guangbo" class="is_success" type="circle" @click="showItem1"></btn>
+        <btn icon="icon-changyonggoupiaorenshanchu" class="is_warn is_disabled" type="circle" @click="showItem1"></btn>
         <btn icon="icon-sousuo" class="is_error is_larger" type="circle" @click="showItem2"></btn>
       </div>
       <div class="col">
@@ -42,11 +41,9 @@
         <btn type="text">标题5<tip tipContent="提示内容"></tip></btn>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
-//  import List from './list.vue'
   import {mapActions, mapGetters, mapState} from 'vuex'
 
   export default {

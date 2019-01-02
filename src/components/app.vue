@@ -6,7 +6,10 @@
     <div class="midden-cont">
       <Menu></Menu>
       <div class="rightView">
-        <router-view></router-view>
+        <div class="view_cont">
+          <router-view></router-view>
+        </div>
+        <md :mdCont="_changeMarkdown"></md>
       </div>
     </div>
     <!--<list></list>-->
@@ -14,7 +17,7 @@
 </template>
 
 <script>
-//  import List from './list.vue'
+  import * as md from '../../docs/index'
   import {mapActions, mapGetters, mapState} from 'vuex'
 
   export default {
@@ -26,7 +29,13 @@
     computed: {
       ...mapState([
         'count'
-      ])
+      ]),
+      _changeMarkdown () {
+        let routeName = this.$route.name
+        let firstChar = routeName.slice(0, 1).toUpperCase()
+        let mdName = `m${firstChar}${routeName.slice(1, )}`
+        return md[mdName]
+      }
     },
     methods: {
       ...mapActions ([
@@ -41,6 +50,7 @@
       }
     },
     created () {
+        console.log(md)
     }
   }
 </script>
