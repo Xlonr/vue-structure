@@ -2,7 +2,7 @@
     <div class="_check_box">
         <label>
             <div class="check_bg"><i :class="['iconfont', icon]" :style="{'color': iconColor}" v-if="isShow"></i></div>
-            <input class="checkbox_def" type="checkbox" @change="changeValue" style="visibility: hidden;"></input>
+            <input class="checkbox_def" type="checkbox" v-model="checked" style="visibility: hidden;"></input>
             <span>{{checkText}}</span>
         </label>
     </div>
@@ -22,22 +22,34 @@
       checkText: {
         type: String,
         default: '复选框'
+      },
+      value: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {
     },
-    beforeCreate () {
+    created () {
+      console.log(this.value)
+      this.checked = this.value
     },
     data () {
       return {
-        isShow: false
+        isShow: false,
+        checked: false
+      }
+    },
+    watch: {
+      checked (newVal, oldVal) {
+        if (newVal !== oldVal) {
+          this.isShow = newVal
+          this.$emit('value', newVal)
+//          console.log(newVal)
+        }
       }
     },
     methods: {
-      changeValue (e) {
-        this.isShow = e.target.checked
-        this.$emit('checkValue', e.target.checked)
-      }
     }
   }
 </script>
