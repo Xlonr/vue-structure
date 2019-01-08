@@ -1,9 +1,11 @@
 <template>
     <div class="_check_box">
         <label>
-            <div class="check_bg"><i :class="['iconfont', icon]" :style="{'color': iconColor}" v-if="isShow"></i></div>
-            <input class="checkbox_def" type="checkbox" v-model="checked" style="visibility: hidden;"></input>
-            <span>{{checkText}}</span>
+            <div :class="['check_bg', {'is_active': isShow}]">
+                <i :class="['iconfont', icon]" :style="{'color': iconColor}" v-if="isShow"></i>
+                <input class="checkbox_def" type="checkbox" v-model="checked" style="visibility: hidden;"></input>
+            </div>
+            <span class="checkbox_text"><slot></slot></span>
         </label>
     </div>
 </template>
@@ -17,11 +19,7 @@
       },
       iconColor: {
         type: String,
-        default: '#21fe8d'
-      },
-      checkText: {
-        type: String,
-        default: '复选框'
+        default: '#fff'
       },
       value: {
         type: Boolean,
@@ -31,7 +29,6 @@
     computed: {
     },
     created () {
-      console.log(this.value)
       this.checked = this.value
     },
     data () {

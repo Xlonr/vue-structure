@@ -1,6 +1,6 @@
 <template>
     <div>
-        <check-box v-for="(it, index) in checkBoxList" :key="index" :checkText="it" :iconColor="iconColor" :icon="icon" @checkValue="(val) => checkBoxValue(it, val)"></check-box>
+        <check-box v-for="(it, index) in checkBoxList" :key="index" :iconColor="iconColor" :icon="icon" @checkValue="(val) => checkBoxValue(it, val)">{{it}}</check-box>
     </div>
 </template>
 
@@ -13,7 +13,7 @@
       },
       iconColor: {
         type: String,
-        default: '#21fe8d'
+        default: '#fff'
       },
       checkBoxList: {
         type: Array,

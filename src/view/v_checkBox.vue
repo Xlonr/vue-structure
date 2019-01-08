@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="row">
-      <check-box v-model="isChecked"></check-box>
+      <check-box v-model="isChecked">复选框</check-box>
     </div>
     <div class="row">
-      <check-box-group></check-box-group>
+      <check-box-group>复选框</check-box-group>
     </div>
   </div>
 </template>
