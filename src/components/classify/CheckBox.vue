@@ -1,9 +1,9 @@
 <template>
-    <div class="_check_box">
+    <div :class="['_check_box', {'disabled': isDisabled}]">
         <label>
             <div :class="['check_bg', {'is_active': isShow}]">
                 <i :class="['iconfont', icon]" :style="{'color': iconColor}" v-if="isShow"></i>
-                <input class="checkbox_def" type="checkbox" v-model="checked" style="visibility: hidden;"></input>
+                <input class="checkbox_def" type="checkbox" v-model="checked" :value="_dfValue" style="visibility: hidden;" :disabled="isDisabled"></input>
             </div>
             <span class="checkbox_text"><slot></slot></span>
         </label>
@@ -22,8 +22,12 @@
         default: '#fff'
       },
       value: {
-        type: Boolean,
+        type: [Boolean, Array],
         default: false
+      },
+      _dfValue: {
+        type: [String, Number],
+        default: ''
       }
     },
     computed: {
@@ -31,8 +35,12 @@
     created () {
       this.checked = this.value
     },
+    mounted () {
+      this.isDisabled = !!this.$el.getAttribute('disabled')
+    },
     data () {
       return {
+        isDisabled: false,
         isShow: false,
         checked: false
       }
@@ -41,8 +49,13 @@
       checked (newVal, oldVal) {
         if (newVal !== oldVal) {
           this.isShow = newVal
-          this.$emit('value', newVal)
+          this.$emit('input', newVal)
 //          console.log(newVal)
+        }
+      },
+      value (newVal, oldVal) {
+        if (newVal !== oldVal) {
+          this.checked = this.value
         }
       }
     },

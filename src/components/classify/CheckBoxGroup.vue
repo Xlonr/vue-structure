@@ -1,6 +1,12 @@
 <template>
     <div>
-        <check-box v-for="(it, index) in checkBoxList" :key="index" :iconColor="iconColor" :icon="icon" @checkValue="(val) => checkBoxValue(it, val)">{{it}}</check-box>
+        <template v-if="isObjectData">
+            <check-box v-for="(it, index) in value" :key="index" :iconColor="iconColor" :icon="icon" :_dfValue="it.value" v-model="it.checked">{{ it.text }}</check-box>
+        </template>
+        <template v-else>
+            <check-box v-for="(it, index) in value" :key="index" :iconColor="iconColor" :icon="icon" :_dfValue="it" v-model="curValues[index]">{{ it }}</check-box>
+        </template>
+        <!--<check-box v-for="(it, index) in value" :key="index" :iconColor="iconColor" :icon="icon" :_dfValue="it" v-model="curValues">{{ it.text }}</check-box>-->
     </div>
 </template>
 
@@ -15,7 +21,7 @@
         type: String,
         default: '#fff'
       },
-      checkBoxList: {
+      value: {
         type: Array,
         default: () => {
           return ['复选框1', '复选框2', '复选框3']
@@ -24,27 +30,35 @@
     },
     computed: {
     },
-    beforeCreate () {
+    created () {
+      this.checkBoxes = this.value
+      if (typeof this.value[0] === 'object') {
+        this.isObjectData = true
+      } else {
+        this.curValues = this.value.map((it) => {
+          return false
+        })
+      }
     },
     data () {
       return {
-        checkedNum: 0,
-        arrList: []
+        isObjectData: false,
+        checkBoxes: [],
+        curValues: []
+      }
+    },
+    watch: {
+      curValues (newVal, oldVal) {
+        let val = []
+        newVal.filter((it, index) => {
+          if (it) {
+            val.push(this.checkBoxes[index])
+          }
+        })
+        this.$emit('change', val)
       }
     },
     methods: {
-      checkBoxValue (it, val) {
-        if (val) {
-          this.arrList.push(it)
-        } else {
-          this.arrList = this.arrList.filter((v) => {
-            if (v !== it) {
-              return v
-            }
-          })
-        }
-        this.$emit('checkValue', this.arrList)
-      }
     }
   }
 </script>

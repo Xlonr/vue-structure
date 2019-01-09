@@ -2,6 +2,7 @@
   position: relative
   cursor: pointer
   display: inline-block
+  margin-left: 20px
   .check_bg
     width: $def_checkbox_width
     height: $def_checkbox_width
@@ -17,8 +18,15 @@
       font-size: 12px
       position: absolute
       margin-top: -1px
-      margin-left: -2px
-      @include def_transform(scale(0.5))
+      margin-left: -3px
+      @include def_transform(scale(0.4))
+  &.disabled
+    cursor: not-allowed
+    .check_bg
+      background-color: #cccccc
+      cursor: not-allowed
+    .checkbox_text
+      cursor: not-allowed
   //color: #21fe8d
   .checkbox_def
     width: $def_checkbox_width
