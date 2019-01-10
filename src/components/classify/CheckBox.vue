@@ -1,11 +1,11 @@
 <template>
-    <div :class="['_check_box', {'disabled': isDisabled}]">
+    <div :class="['_check_box', {'disabled': isDisabled || is_disabled}]">
         <label>
-            <div :class="['check_bg', {'is_active': isShow}]">
-                <i :class="['iconfont', icon]" :style="{'color': iconColor}" v-if="isShow"></i>
-                <input class="checkbox_def" type="checkbox" v-model="checked" :value="_dfValue" style="visibility: hidden;" :disabled="isDisabled"></input>
+            <div :class="['check_bg', {'is_active': isShow || indeterminate}]">
+                <i :class="[{'no_check_all': indeterminate},'iconfont', indeterminate ? 'icon-jian' : icon]" :style="{'color': iconColor}" v-if="isShow || indeterminate"></i>
+                <input class="checkbox_def" type="checkbox" v-model="checked" :value="_dfValue" style="visibility: hidden;" :disabled="isDisabled || is_disabled"></input>
             </div>
-            <span class="checkbox_text"><slot></slot></span>
+            <span class="checkbox_text" :style="{'color': checked ? text_color : ''}"><slot></slot></span>
         </label>
     </div>
 </template>
@@ -28,6 +28,18 @@
       _dfValue: {
         type: [String, Number],
         default: ''
+      },
+      indeterminate: {
+        type: Boolean,
+        default: false
+      },
+      is_disabled: {
+        type: [Boolean, String],
+        default: false
+      },
+      text_color: {
+        type: String,
+        default: '#000'
       }
     },
     computed: {
@@ -50,7 +62,6 @@
         if (newVal !== oldVal) {
           this.isShow = newVal
           this.$emit('input', newVal)
-//          console.log(newVal)
         }
       },
       value (newVal, oldVal) {

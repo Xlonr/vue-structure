@@ -1,9 +1,12 @@
 <template>
     <label class="_radios">
-        <div class="_rad" @click="changeType">
+        <div class="_def_rad" @click="changeType" v-if="type === 'def'">
+            <i :class="[{'pos': isShow}]"></i>
+        </div>
+        <div :class="['_rad', {'is_checked': isChecked}]" @click="changeType" v-else>
             <i class="pos" v-if="isShow"></i>
         </div>
-        <span>{{ radio_title }}</span>
+        <span><slot></slot></span>
     </label>
 </template>
 
@@ -14,13 +17,13 @@
         type: Boolean,
         default: false
       },
-      radio_title: {
-        type: [String, Number],
-        default: '单选'
-      },
       isToggle: {
         type: Boolean,
         default: false
+      },
+      type: {
+        type: String,
+        default: 'def'
       }
     },
     computed: {

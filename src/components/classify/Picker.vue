@@ -5,9 +5,11 @@
     </div>
     <div class="_calendar_picker" v-if="showCalendar">
       <div class="_picker_header">
+        <i class="iconfont icon-left arrow" @click="pYear--"></i>
         <i class="iconfont icon-left arrow" @click="changeCalendar('prev')"></i>
         <span class="calendar">{{pYear}}年{{pMonths}}月</span>
         <i class="iconfont icon-arrow-right arrow" @click="changeCalendar('next')"></i>
+        <i class="iconfont icon-arrow-right arrow" @click="pYear++"></i>
       </div>
       <div class="picker_cont">
         <ul>

@@ -1,6 +1,7 @@
 ._radios
   margin-left: 20px
-  ._rad
+  @include def_user_select(none)
+  ._def_rad
     width: $def_radio_width
     height: $def_radio_width
     @include radius(10px)
@@ -16,6 +17,33 @@
         height: 6px
         @include radius(10px)
         background: #346bff
+        @include def_transition(all, 1s)
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        margin: auto
+  ._rad
+    width: $def_radio_width
+    height: $def_radio_width
+    @include radius(10px)
+    border: 1px solid #ddd
+    position: relative
+    cursor: pointer
+    display: inline-block
+    &.is_checked
+      border: 1px solid #409eff
+      background: #409eff
+      box-shadow: 0px 0px 3px 1px #409eff
+      @include def_transition(all, 1s)
+    .pos
+      &:after
+        content: ''
+        width: 6px
+        height: 6px
+        @include radius(100px)
+        background: #fff
         position: absolute
         top: 0
         bottom: 0

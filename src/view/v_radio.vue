@@ -1,10 +1,11 @@
 <template>
   <div>
     <div class="col">
-      <radios :isChecked="isChecked" @input="val => isChecked = val" :isToggle="true"></radios>
+      <radios :isChecked="isChecked" @input="val => isChecked = val" :isToggle="true">单选</radios>
+      <radios :isChecked="isChecked" type="primary" @input="val => isChecked = val" :isToggle="true">单选</radios>
     </div>
     <div class="row">
-      <radio-group class="" :checkIndex="checkIndex" :options="radioConts" @input="index => checkIndex = index"></radio-group>
+      <radio-group class="" :checkIndex="checkIndex" :options="radioConts" @input="index => checkIndex = index">单选</radio-group>
     </div>
   </div>
 </template>

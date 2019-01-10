@@ -3,6 +3,8 @@
   cursor: pointer
   display: inline-block
   margin-left: 20px
+  outline: none
+  @include def_user_select(none)
   .check_bg
     width: $def_checkbox_width
     height: $def_checkbox_width
@@ -11,7 +13,7 @@
     cursor: pointer
     display: inline-block
     @include radius(3px)
-    @include def_transition(all, 1s)
+    @include def_transition(all, .5s)
     &.is_active
       background-color: #2a86ff
     .iconfont
@@ -20,6 +22,11 @@
       margin-top: -1px
       margin-left: -3px
       @include def_transform(scale(0.4))
+    > .no_check_all
+      &.iconfont
+        font-size: 15px
+        font-weight: bolder
+        margin-left: -2px
   &.disabled
     cursor: not-allowed
     .check_bg
@@ -29,8 +36,8 @@
       cursor: not-allowed
   //color: #21fe8d
   .checkbox_def
-    width: $def_checkbox_width
-    height: $def_checkbox_width
+    //width: $def_checkbox_width
+    //height: $def_checkbox_width
     position: absolute
     top: 0
     left: 0
