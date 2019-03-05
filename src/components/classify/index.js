@@ -14,6 +14,7 @@ import Picker from './Picker'
 import Process from './Process'
 import ClockTime from './clock/ClockTime'
 import CalendarTime from './clock/CalendarTime'
+import CirQue from './Circle'
 
 export {
   Board,
@@ -28,5 +29,6 @@ export {
   Picker,
   Process,
   ClockTime,
-  CalendarTime
+  CalendarTime,
+  CirQue
 }

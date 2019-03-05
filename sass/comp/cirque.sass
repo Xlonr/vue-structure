@@ -1,0 +1,27 @@
+._cirque
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  .cav
+    position: absolute
+    top: 0
+    left: 0
+  #process_cirque
+    transform: rotate(-90deg)
+  .out_circle
+    width: 120%
+    height: 120%
+    position: absolute
+    border: 1px solid #ccc
+    border-radius: 100%
+    transition: all 1s
+    .process_pos
+      width: 9%
+      height: 9%
+      @include radius(100%)
+      position: absolute
+      top: -5%
+      background: #4683ff
+      transform: translate(-50%, 0)
+      left: 50%

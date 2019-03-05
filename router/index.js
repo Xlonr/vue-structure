@@ -14,6 +14,7 @@ import vSelect from '../src/view/v_select.vue'
 import vNotice from '../src/view/v_notice.vue'
 import vProcess from '../src/view/v_process.vue'
 import vClock from '../src/view/v_clock.vue'
+import vCirqueProcess from '../src/view/v_cirque_process.vue'
 
 Vue.use(Router)
 
@@ -68,6 +69,11 @@ export default new Router({
       path: '/vClock',
       name: 'clock',
       component: vClock
+    },
+    {
+      path: '/vCirqueProcess',
+      name: 'cirqueProcess',
+      component: vCirqueProcess
     }
   ]
 })

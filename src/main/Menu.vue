@@ -22,7 +22,8 @@
           {text: '输入框 (input)', path: '/vInput'},
           {text: '通知 (notice)', path: '/vNotice'},
           {text: '进度 (process)', path: '/vProcess'},
-          {text: '时钟 (clock)', path: '/vClock'}
+          {text: '时钟 (clock)', path: '/vClock'},
+          {text: '圆环进度 (cirque)', path: '/vCirqueProcess'}
         ],
         activeIndex: 0
       }
