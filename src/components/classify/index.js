@@ -15,6 +15,7 @@ import Process from './Process'
 import ClockTime from './clock/ClockTime'
 import CalendarTime from './clock/CalendarTime'
 import CirQue from './Circle'
+import WaterMark from './process/WaterMark'
 
 export {
   Board,
@@ -30,5 +31,6 @@ export {
   Process,
   ClockTime,
   CalendarTime,
-  CirQue
+  CirQue,
+  WaterMark
 }

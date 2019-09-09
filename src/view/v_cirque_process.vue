@@ -1,6 +1,11 @@
 <template>
-  <div class="cirque_process">
-    <cir-que :circle-line-width="5" :process-value="proValue"></cir-que>
+  <div class="layout">
+    <div class="cirque_process">
+      <cir-que :circle-line-width="5" :process-value="proValue"/>
+    </div>
+    <div class="cirque_process">
+      <water-mark :currentValue="currentValue" :totalValue="100"/>
+    </div>
   </div>
 </template>
 
@@ -11,7 +16,8 @@
   export default {
     data () {
       return {
-        proValue: 1
+        proValue: 1,
+        currentValue: 0
       }
     },
     computed: {
@@ -25,6 +31,12 @@
     mounted () {
       setInterval(() => {
         this.proValue++
+      }, 1000)
+      let tm1 = setInterval(() => {
+        this.currentValue++
+        if (this.currentValue >= 100) {
+          clearInterval(tm1)
+        }
       }, 1000)
     }
   }

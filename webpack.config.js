@@ -6,6 +6,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin') //css样式从js文件中分离出来
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   entry: {
@@ -61,7 +62,7 @@ module.exports = {
         //   name: utils.assetsPath('docs/[name].[ext]')
         // }
       }
-  ]
+    ]
   },
   plugins: [
     new ExtractTextPlugin("app.css"),
@@ -80,7 +81,8 @@ module.exports = {
         removeAttributeQuotes: true   // html压缩去除引号
       }
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    // new BundleAnalyzerPlugin()
   ],
   devServer: {
     contentBase: "/",
