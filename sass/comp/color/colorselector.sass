@@ -1,0 +1,112 @@
+.element_drop-down
+  width: 280px
+  max-height: 0
+  box-shadow: 0 1px 3px 2px #dddddd
+  @include radius(2px)
+  display: none
+  padding: 15px 20px
+  box-sizing: border-box
+
+  &.drop-down_enter
+    display: block
+    @include def_animation(drop_element_enter, 1s, linear forwards, 0s)
+
+  &.drop-down_leave
+    display: block
+    @include def_animation(drop_element_leave, 1s, linear forwards, 0s)
+
+  .color_board
+    width: 100%
+    height: 180px
+    position: relative
+
+    .color-board_write
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      background: linear-gradient(90deg, #ffffff, hsla(0, 0%, 100%, 0))
+      
+    .color-board_black
+      @extend .color-board_write
+      background: linear-gradient(0deg, #000000, transparent)
+
+    .color-point
+      display: inherit
+      position: absolute
+      width: 10px
+      height: 10px
+      border: 1px solid #fff
+      box-shadow: 0 1px 3px 0 #cccccc
+      @include radius(50%)
+
+
+  .color-selector-slider
+    width: 100%
+    height: 12px
+    position: relative
+
+    .color-selector-slider_bar
+      width: 100%
+      height: 100%
+      margin-top: 10px
+      background: linear-gradient(90deg, red 0, #ff0 17%, lime 33%, cyan 50%, blue 67%, #f0f 83%, red)
+
+    .color-selector-slider_thumb
+      position: absolute
+      box-shadow: 0 1px 3px 2px #dddddd
+      width: 6px
+      height: 15px
+      top: -2px
+      background: #fff
+      cursor: pointer
+      @include def_user_drag(none)
+      @include radius(10px)
+
+  .color-selector-alpha
+    width: 100%
+    height: 12px
+    position: relative
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==)
+
+    .color-selector-alpha_bar
+      width: 100%
+      height: 100%
+      margin-top: 10px
+
+    .color-selector-alpha_thumb
+      position: absolute
+      box-shadow: 0 1px 3px 2px #dddddd
+      width: 6px
+      height: 15px
+      top: -2px
+      background: #fff
+      cursor: pointer
+      @include def_user_drag(none)
+      @include radius(10px)
+
+  .color-selector-value
+    height: 20px
+    margin-top: 10px
+    border: 1px solid #dddddd
+    outline: none
+    padding: 0 5px
+    color: #cccccc
+    @include radius(5px)
+
+@keyframes drop_element_enter
+  0%
+    opacity: 0
+    max-height: 0
+  100%
+    opacity: 1
+    max-height: 400px
+
+@keyframes drop_element_leave
+  0%
+    opacity: 1
+    max-height: 400px
+  100%
+    max-height: 0
+    opacity: 0

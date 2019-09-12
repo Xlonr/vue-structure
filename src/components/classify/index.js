@@ -16,6 +16,7 @@ import ClockTime from './clock/ClockTime'
 import CalendarTime from './clock/CalendarTime'
 import CirQue from './Circle'
 import WaterMark from './process/WaterMark'
+import ColorSelector from './color/ColorSelector'
 
 export {
   Board,
@@ -32,5 +33,6 @@ export {
   ClockTime,
   CalendarTime,
   CirQue,
-  WaterMark
+  WaterMark,
+  ColorSelector
 }

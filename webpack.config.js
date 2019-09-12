@@ -38,7 +38,8 @@ module.exports = {
       {
         test: /\.js$/,
         use: ['babel-loader'],
-        exclude: /node_modules/
+        // exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'node_modules/ujs_js')]
       },
       {
         test: /\.vue$/,

@@ -15,6 +15,7 @@ import vNotice from '../src/view/v_notice.vue'
 import vProcess from '../src/view/v_process.vue'
 import vClock from '../src/view/v_clock.vue'
 import vCirqueProcess from '../src/view/v_cirque_process.vue'
+import vColor from '../src/view/v_color.vue'
 
 Vue.use(Router)
 
@@ -74,6 +75,11 @@ export default new Router({
       path: '/vCirqueProcess',
       name: 'cirqueProcess',
       component: vCirqueProcess
+    },
+    {
+      path: '/vColor',
+      name: 'color',
+      component: vColor
     }
   ]
 })

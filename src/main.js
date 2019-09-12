@@ -11,6 +11,8 @@ import {connectSocket} from '../service/socket'
 import {notices} from './components/plugins/notice/index'
 import {popOver} from './components/plugins/pop/index'
 import '../sass/index.sass'
+import ujs from 'ujs_js'
+import {Color} from './components/plugins/color/color'
 
 Vue.config.debug = true
 
@@ -40,5 +42,7 @@ Vue.prototype.$_popOver = (propData) => {
 
 window.app = app
 window.vm = Vue
+window.ujs = ujs
+window.Color = new Color()
 
 export {Vue}

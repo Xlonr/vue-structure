@@ -23,7 +23,8 @@
           {text: '通知 (notice)', path: '/vNotice'},
           {text: '进度 (process)', path: '/vProcess'},
           {text: '时钟 (clock)', path: '/vClock'},
-          {text: '圆环进度 (cirque)', path: '/vCirqueProcess'}
+          {text: '圆环进度 (cirque)', path: '/vCirqueProcess'},
+          {text: '颜色选择器 (color)', path:'/vColor'}
         ],
         activeIndex: 0
       }

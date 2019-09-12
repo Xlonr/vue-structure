@@ -1,7 +1,7 @@
 <template>
     <div class="water_mark">
       <div class="water_height" :style="[changeProcess]"></div>
-      <span class="text" v-text="`${((currentValue / totalValue) * 100.00).toFixed(2)}%`"></span>
+      <span class="text" v-text="`${((currentValue / totalValue) * 100.00).toFixed(fixed)}%`"></span>
     </div>
 </template>
 
@@ -25,6 +25,10 @@
             {range: [0.7, 1], bgcolor: '#4ecb4e'}
           ]
         }
+      },
+      fixed: {
+        type: Number,
+        default: 0
       }
     },
     computed: {
