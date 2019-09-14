@@ -3,16 +3,17 @@
   max-height: 0
   box-shadow: 0 1px 3px 2px #dddddd
   @include radius(2px)
-  display: none
+  //display: none
+  opacity: 0
   padding: 15px 20px
   box-sizing: border-box
+  position: absolute
+  background: #ffffff
 
   &.drop-down_enter
-    display: block
     @include def_animation(drop_element_enter, 1s, linear forwards, 0s)
 
   &.drop-down_leave
-    display: block
     @include def_animation(drop_element_leave, 1s, linear forwards, 0s)
 
   .color_board
@@ -94,6 +95,13 @@
     padding: 0 5px
     color: #cccccc
     @include radius(5px)
+
+  .color-selector-text
+    margin-left: 10px
+    color: #232323
+
+  .color-selector-footer
+    margin-top: 10px
 
 @keyframes drop_element_enter
   0%

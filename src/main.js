@@ -45,4 +45,7 @@ window.vm = Vue
 window.ujs = ujs
 window.Color = new Color()
 
-export {Vue}
+export {
+  Vue,
+  ujs
+}

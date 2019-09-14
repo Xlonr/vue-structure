@@ -29,7 +29,11 @@ export default new Router({
     {
       path: '/vBtn',
       name: 'btn',
-      component: vBtn
+      component: vBtn,
+      beforeEnter (to, from, next) {
+        console.log(to)
+        next()
+      }
     },
     {
       path: '/vCheckBox',

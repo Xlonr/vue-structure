@@ -29,13 +29,6 @@ class PrinterCircle {
     this.ctx = canvas.getContext('2d')
     this.points = Array.from({length: this.counts}).map(this.setPoints.bind(this))
     window.addEventListener('resize', this.resizeScreen.bind(this))
-    // this.parentElement.addEventListener('mouseenter', (e) => {
-    //   let {x, y} = this.mouseIn(e)
-    //   this.mousePos.x = x
-    //   this.mousePos.y = y
-    //   this.mouseenter = true
-    //   console.log(this.mousePos)
-    // })
     this.parentElement.addEventListener('mouseout', () => {this.mouseenter = false})
   }
 
@@ -115,7 +108,6 @@ class PrinterCircle {
   }
 
   mouseIn (e) {
-    console.log(e)
     return {
       x: e.offsetX,
       y: e.offsetY

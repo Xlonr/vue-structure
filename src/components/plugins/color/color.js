@@ -1,3 +1,5 @@
+import { ujs } from '../../../main'
+
 export class Color {
   constructor () {
   }
@@ -56,7 +58,7 @@ export class Color {
 
   // rgb转换为16进制
   rgbToHex (rgbColor) {
-    if (ujs.isArray(rgbColor) && rgbColor.length === 3) {
+    if (ujs.isArray(rgbColor)) {
       return this.composeHex(rgbColor)
     } else if (/^(rgb|RGB)/.test(rgbColor)) {
       return this.composeHex(rgbColor.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(','))
@@ -74,7 +76,8 @@ export class Color {
 
   composeHex (arr) {
     let colorHex = '#'
-    arr.forEach(num => {
+    arr.forEach((num, index) => {
+      if (index > 2) return
       let hexNum = ('0' + Number(num).toString(16)).slice(-2)
       colorHex += hexNum
     })

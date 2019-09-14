@@ -1,6 +1,6 @@
 <template>
   <div>
-    <color-selector></color-selector>
+    <color-selector alpha></color-selector>
   </div>
 </template>
 

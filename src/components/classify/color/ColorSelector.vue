@@ -16,6 +16,10 @@
           <div class="color-selector-alpha_thumb" :style="{'left': `${alpha.left}px`}"></div>
         </div>
         <input class="color-selector-value" type="text" v-model="colorValue">
+        <span class="color-selector-text" v-text="getHexValue"></span>
+        <div class="color-selector-footer">
+          <btn class="is_per is_small" @click="emitSure">确认</btn>
+        </div>
       </div>
     </div>
 </template>
@@ -23,6 +27,8 @@
 <script>
   import {ListenMouseEvent} from '../../plugins/mouseEvent/ListenMouseEvent'
   import {Color} from '../../plugins/color/color'
+
+  const _Color = new Color()
 
   export default {
     props: {
@@ -49,10 +55,12 @@
           left: 0,
           top: 0
         },
-        Color: new Color(),
         colorValue: '',
         alphaBgColor: ''
       }
+    },
+    beforeCreate () {
+      console.log(this.colorValue)
     },
     beforeMount () {
     },
@@ -61,33 +69,38 @@
         if (this.isShowDropDown !== 0) return
         let dom = document.querySelector('.color-selector-slider_bar')
         let sliderW = dom.offsetWidth
-        let obj = this.Color.hsvToRgb(this.slider.left / sliderW * 360, 100, 100)
+        let obj = _Color.hsvToRgb(this.slider.left / sliderW * 360, 100, 100)
         return `rgb(${obj._r}, ${obj._g}, ${obj._b})`
+      },
+      getHexValue () {
+        return _Color.rgbToHex(this.colorValue.replace(/(?:\(|\)|rgba)*/g, '').split(','))
       }
     },
     methods: {
       mouseMoveEventSlider (e) {
         let dom = document.querySelector('.color-selector-slider')
-        let thumbW = document.querySelector('.color-selector-slider_thumb')
+        // let thumbW = document.querySelector('.color-selector-slider_thumb')
         let {x} = e[0]
         this.slider.movePos.x = x
         let dis = this.slider.movePos.x - this.slider.downPos.x
-        if (dis > dom.offsetWidth - thumbW.offsetWidth || dis < 0) {
+        if (dis > dom.offsetWidth || dis < 0) {
 //          this.mouseUpEvent()
         } else {
           this.slider.left = this.slider.movePos.x - this.slider.downPos.x
+          this.currentColor()
         }
       },
       mouseMoveEventAlpha (e) {
         let dom = document.querySelector('.color-selector-alpha')
-        let alphaW = document.querySelector('.color-selector-alpha_thumb')
+        // let alphaW = document.querySelector('.color-selector-alpha_thumb')
         let {x} = e[0]
         this.alpha.movePos.x = x
         let dis = this.alpha.movePos.x - this.alpha.downPos.x
-        if (dis > dom.offsetWidth - alphaW.offsetWidth || dis < 0) {
+        if (dis > dom.offsetWidth || dis < 0) {
 //          this.mouseUpEvent()
         } else {
           this.alpha.left = this.alpha.movePos.x - this.alpha.downPos.x
+          this.currentColor()
         }
       },
       mouseMoveEventPos (e) {
@@ -109,12 +122,17 @@
       currentColor () {
         let dom = document.querySelector('.color_board')
         let posDom = document.querySelector('.color-point')
+        let alphaDom = document.querySelector('.color-selector-alpha_bar')
         let domW = dom.offsetWidth
         let domH = dom.offsetHeight
         let sliderW = document.querySelector('.color-selector-slider_bar').offsetWidth
-        let col = this.Color.hsvToRgb(this.slider.left / sliderW * 360, (this.pos.top + posDom.offsetHeight / 2) / domH * 100, (this.pos.left + posDom.offsetWidth / 2) / domW * 100)
-        this.alphaBgColor = `linear-gradient(90deg, rgba(${col._r}, ${col._g}, ${col._b}, 0) 0%, rgb(${col._r}, ${col._g}, ${col._b}) 100%)`
-        console.log(this.alphaBgColor)
+        let col = _Color.hsvToRgb(this.slider.left / sliderW * 360, (domH - (this.pos.top + posDom.offsetHeight / 2)) / domH * 100, (this.pos.left + posDom.offsetWidth / 2) / domW * 100)
+        let color = [col._r, col._g, col._b]
+        this.alphaBgColor = `linear-gradient(90deg, rgba(${color.join(',')}, 0) 0%, rgb(${color.join(',')}) 100%)`
+        this.colorValue = `rgba(${color.join(',')}, ${(this.alpha.left / alphaDom.offsetWidth).toFixed(2)})`
+      },
+      emitSure () {
+        this.$emit('color', this.colorValue)
       }
     },
     mounted () {
@@ -150,6 +168,7 @@
         this.pos.isMouseDown = true
       })
       listen2.bind('mouseMoveEvent', this.mouseMoveEventPos)
+      console.log(document.querySelector('.color_selector').hasAttribute('alpha'), 3333)
     }
   }
 </script>
