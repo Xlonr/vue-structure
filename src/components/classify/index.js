@@ -14,6 +14,7 @@ import Picker from './Picker'
 import Process from './Process'
 import ClockTime from './clock/ClockTime'
 import CalendarTime from './clock/CalendarTime'
+import Timer from './clock/Timer'
 import CirQue from './Circle'
 import WaterMark from './process/WaterMark'
 import ColorSelector from './color/ColorSelector'
@@ -32,6 +33,7 @@ export {
   Process,
   ClockTime,
   CalendarTime,
+  Timer,
   CirQue,
   WaterMark,
   ColorSelector

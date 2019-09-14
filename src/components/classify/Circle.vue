@@ -58,7 +58,7 @@
     },
     watch: {
       processValue (newVal) {
-        if (+newVal >= +this.totalProcessValue) return
+        if (+newVal > +this.totalProcessValue) return
         this.drawProcess()
       }
     },

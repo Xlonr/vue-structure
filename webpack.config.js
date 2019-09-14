@@ -1,10 +1,11 @@
 /**
  * Created by xm on 2017/9/10.
  */
+
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin') //css样式从js文件中分离出来
+const ExtractTextPlugin = require('extract-text-webpack-plugin') // css样式从js文件中分离出来
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -98,7 +99,6 @@ console.log('env:', process.env.NODE_ENV)
 
 if (process.env.NODE_ENV && process.env.NODE_ENV.trim() === 'development') {
   module.exports.devtool = 'source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {

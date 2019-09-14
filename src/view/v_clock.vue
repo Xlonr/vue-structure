@@ -1,9 +1,10 @@
 <template>
   <div>
-    <clock-time></clock-time>
+    <clock-time/>
     <div class="edge">
-      <calendar-time></calendar-time>
+      <calendar-time/>
     </div>
+    <timer/>
   </div>
 </template>
 

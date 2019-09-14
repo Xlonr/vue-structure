@@ -19,6 +19,7 @@
 <script>
   import * as md from '../../docs/index'
   import {mapActions, mapGetters, mapState} from 'vuex'
+  import PrinterCircle from './plugins/canvas/line'
 
   export default {
     data () {
@@ -51,6 +52,15 @@
     },
     created () {
         console.log(md)
+    },
+    mounted() {
+      new PrinterCircle('body', {
+        counts: 10,
+        color: '#ccc',
+        lineWidth: 5,
+        rate: 0.5,
+        radius: 5
+      }).drawStart()
     }
   }
 </script>

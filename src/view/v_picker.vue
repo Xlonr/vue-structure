@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="col">
-      <!--<span>{{ dt }}</span>-->
-      <picker @dateTimes="dateTimes" :isHover="Boolean(true)">
+      <picker @dateTimes="dateTimes" :isCheck="true">
         <span slot="slot-cont">
           <input-cont class="picker_calculate_num" input_text="选择日期" :value="dt"></input-cont>
         </span>
@@ -12,8 +11,7 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
+  import {mapActions, mapState} from 'vuex'
 
   export default {
     data () {

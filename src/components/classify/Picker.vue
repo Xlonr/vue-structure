@@ -4,23 +4,34 @@
       <slot class="slot-cont" name="slot-cont"></slot>
     </div>
     <div class="_calendar_picker" v-if="showCalendar">
-      <div class="_picker_header">
-        <i class="iconfont icon-left arrow" @click="pYear--"></i>
-        <i class="iconfont icon-left arrow" @click="changeCalendar('prev')"></i>
-        <span class="calendar">{{pYear}}年{{pMonths}}月</span>
-        <i class="iconfont icon-arrow-right arrow" @click="changeCalendar('next')"></i>
-        <i class="iconfont icon-arrow-right arrow" @click="pYear++"></i>
-      </div>
-      <div class="picker_cont">
-        <ul>
-          <li class="week_list" v-for="it in weeks">{{it}}</li>
-        </ul>
-        <ul>
-          <li class="day_list p_time" v-for="ptime in SurplusTime" @click="checkDate('prev', ptime)">{{ptime}}</li>
-          <li :class="['day_list', {'is_active': `${pYear}-${pMonths}-${day}` === cDate}]" v-for="day in tDays" @click="selectDateTime(day)">{{day}}</li>
-          <li class="day_list n_time" v-for="ntime in nextTimes" @click="checkDate('next', ntime)">{{ntime}}</li>
-        </ul>
-      </div>
+      <template v-if="!toggleCalendar">
+        <div class="_picker_header">
+          <i class="iconfont icon-houtui arrow" @click="pYear--"></i>
+          <i class="iconfont icon-left arrow" @click="changeCalendar('prev')"></i>
+          <span class="calendar">{{pYear}}年{{pMonths}}月</span>
+          <i class="iconfont icon-arrow-right arrow" @click="changeCalendar('next')"></i>
+          <i class="iconfont icon-qianjin arrow" @click="pYear++"></i>
+        </div>
+        <div class="picker_cont">
+          <ul>
+            <li class="week_list" v-for="it in weeks">{{it}}</li>
+          </ul>
+          <ul class="u_picker">
+            <li class="day_list p_time" v-for="ptime in SurplusTime" @click="checkDate('prev', ptime)">{{ptime}}</li>
+            <li :class="['day_list', {'is_active': `${pYear}-${pMonths}-${day}` === cDate}]" v-for="day in tDays" @click="selectDateTime(day)">{{day}}</li>
+            <li class="day_list n_time" v-for="ntime in nextTimes" @click="checkDate('next', ntime)">{{ntime}}</li>
+          </ul>
+        </div>
+        <div class="_clock" v-if="isChooseTime" @click="chooseTimes">
+          <i class="iconfont icon-shizhong"></i>
+        </div>
+      </template>
+      <template v-else>
+        <div class="_choose_time"><i class="iconfont icon-fanhui back" @click="toggleCalendar = false"></i>Timer</div>
+        <div class="_change_timer">
+          <timer :changing="false" />
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -35,6 +46,10 @@
       isHover: {
         type: Boolean,
         default: false
+      },
+      isChooseTime: {
+        type: Boolean,
+        default: true
       }
     },
     computed: {
@@ -68,7 +83,8 @@
         pMonths: new Date().getMonth() + 1,
         frontDays: 0,
         cDate: '',
-        showCalendar: false
+        showCalendar: false,
+        toggleCalendar: false
       }
     },
     methods: {
@@ -124,6 +140,9 @@
       mouseHandler (val) {
         if (!this.isHover) return
         this.showCalendar = !!val
+      },
+      chooseTimes () {
+        this.toggleCalendar = true
       }
     },
     mounted () {
