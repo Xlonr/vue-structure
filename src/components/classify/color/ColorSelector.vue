@@ -1,6 +1,6 @@
 <template>
     <div class="color_selector">
-      <btn class="is_per is_small" type="fillet" @click="isShowDropDown === 1 ? isShowDropDown = 0 : isShowDropDown === 0 ? isShowDropDown = 1 : isShowDropDown = 0">按钮</btn>
+      <btn class="is_per is_small" type="fillet" icon="icon-jiantouxia" @click="isShowDropDown === 1 ? isShowDropDown = 0 : isShowDropDown === 0 ? isShowDropDown = 1 : isShowDropDown = 0">颜色选择</btn>
       <div :class="['element_drop-down', {'drop-down_enter': isShowDropDown === 0, 'drop-down_leave': isShowDropDown === 1}]">
         <div class="color_board" :style="{'background-color': getColorBg}">
           <div class="color-board_write"></div>
@@ -111,7 +111,7 @@
         this.pos.movePos.y = y
         let disX = this.pos.movePos.x - this.pos.downPos.x
         let disY = this.pos.movePos.y - this.pos.downPos.y
-        if (disX > dom.offsetWidth - pos.offsetWidth || disX < 0 || disY < 0 || disY > dom.offsetHeight - pos.offsetHeight) {
+        if (disX > dom.offsetWidth - pos.offsetWidth / 2 || disX < -pos.offsetWidth / 2 || disY < -pos.offsetHeight / 2 || disY > dom.offsetHeight / 2 - pos.offsetHeight) {
 //          this.mouseUpEvent()
         } else {
           this.pos.left = this.pos.movePos.x - this.pos.downPos.x
@@ -133,6 +133,7 @@
       },
       emitSure () {
         this.$emit('color', this.colorValue)
+        this.isShowDropDown = 1
       }
     },
     mounted () {

@@ -1,7 +1,7 @@
 <template>
   <div class="_input">
     <span class="title" v-if="title_direct === 'left'">{{input_title}}</span>
-    <input class="ele" :type="input_type" :placeholder="input_text" :value="value" @input="inputValue" :disabled="disabled"/>
+    <input :class="['ele', {'disabled': disabled}]" :type="input_type" :placeholder="input_text" :value="value" @input="inputValue" :disabled="disabled"/>
     <span class="title" v-if="title_direct === 'right'">{{input_title}}</span>
   </div>
 </template>
@@ -34,10 +34,6 @@
         default: ''
       }
     },
-    computed: {
-    },
-    beforeCreate () {
-    },
     data () {
       return {
       }
@@ -46,6 +42,8 @@
       inputValue (e) {
         this.$emit('input', e.target.value)
       }
+    },
+    mounted () {
     }
   }
 </script>

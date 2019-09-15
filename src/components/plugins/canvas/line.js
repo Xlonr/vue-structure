@@ -11,11 +11,14 @@ class PrinterCircle {
     this.ctx = null
     this.color = config.color || '#ccc'
     this.lineWidth = config.lineWidth || 5
-    this.mouseenter = false
+    this.mouseEnterActive = false
     this.mousePos = {
-      x: 0,
-      y: 0
+      x: 300,
+      y: 200
     }
+
+    this.drawStart = this.drawStart.bind(this)
+    this.mouseMoveEvent = this.mouseMoveEvent.bind(this)
     this.init()
   }
 
@@ -29,7 +32,20 @@ class PrinterCircle {
     this.ctx = canvas.getContext('2d')
     this.points = Array.from({length: this.counts}).map(this.setPoints.bind(this))
     window.addEventListener('resize', this.resizeScreen.bind(this))
-    this.parentElement.addEventListener('mouseout', () => {this.mouseenter = false})
+    window.addEventListener('mousemove', this.mouseMoveEvent)
+    window.addEventListener('blur', () => {
+      this.mouseEnterActive = false
+    })
+    window.addEventListener('focus', () => {
+      this.mouseEnterActive = true
+    })
+    // this.parentElement.addEventListener('mouseout', () => {
+    //   this.mouseEnterActive = false
+    //   // window.removeEventListener('mousemove', this.mouseMoveEvent)
+    // })
+    window.addEventListener('mouseleave', () => {
+      console.log(44444)
+    })
   }
 
   setPoints () {
@@ -37,8 +53,8 @@ class PrinterCircle {
       x: Math.ceil(Math.random() * this.width),
       y: Math.ceil(Math.random() * this.height),
       r: +(Math.random() * this.radius).toFixed(3),
-      rateX: +(Math.random() * 2 - 1).toFixed(3),
-      rateY: +(Math.random() * 2 - 1).toFixed(3)
+      rateX: +(Math.random() * 2).toFixed(3),
+      rateY: +(Math.random() * 2).toFixed(3)
     }
   }
 
@@ -52,10 +68,25 @@ class PrinterCircle {
       this.ctx.arc(it.x, it.y, it.r, 0, Math.PI * 2, false)
       this.ctx.fillStyle = this.color
       this.ctx.fill()
-      if (this.mouseenter) {
-        let avg = Math.ceil(Math.abs(this.mousePos.x - it.x) / Math.abs(this.mousePos.y - it.y)).toFixed(3)
-        it.x += it.rateX * this.rate
-        it.y = it.x / avg
+      console.log(this.mouseEnterActive)
+      if (this.mouseEnterActive) {
+        let disX = this.mousePos.x - it.x
+        let disY = this.mousePos.y - it.y
+        let reg = Math.abs(disX / disY)
+        let x = it.rateX * this.rate
+        if (disX > 0 && disY > 0) {
+          it.x += x
+          it.y += x / reg
+        } else if (disX < 0 && disY > 0) {
+          it.x -= x
+          it.y += x / reg
+        } else if (disX > 0 && disY < 0) {
+          it.x += x
+          it.y -= x / reg
+        } else {
+          it.x -= x
+          it.y -= x / reg
+        }
       } else {
         it.x += it.rateX * this.rate
         it.y += it.rateY * this.rate
@@ -98,7 +129,7 @@ class PrinterCircle {
     this.ctx.clearRect(0, 0, this.width, this.height)
     this.drawPoints()
     this.drawLines()
-    window.requestAnimationFrame(this.drawStart.bind(this))
+    window.requestAnimationFrame(() => {this.drawStart()})
   }
 
   resizeScreen () {
@@ -107,8 +138,8 @@ class PrinterCircle {
     this.height = dom.clientHeight
   }
 
-  mouseIn (e) {
-    return {
+  mouseMoveEvent (e) {
+    this.mousePos = {
       x: e.offsetX,
       y: e.offsetY
     }

@@ -58,7 +58,7 @@
         counts: 10,
         color: '#ccc',
         lineWidth: 5,
-        rate: 0.5,
+        rate: 0.3,
         radius: 5
       }).drawStart()
     }
