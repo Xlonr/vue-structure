@@ -10,97 +10,95 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      icon: {
-        type: String,
-        default: 'icon-xuanzhong'
-      },
-      iconColor: {
-        type: String,
-        default: '#fff'
-      },
-      value: {
-        type: Array,
-        default: () => {
-          return ['复选框1', '复选框2', '复选框3']
+export default {
+  props: {
+    icon: {
+      type: String,
+      default: 'icon-xuanzhong'
+    },
+    iconColor: {
+      type: String,
+      default: '#fff'
+    },
+    value: {
+      type: Array,
+      default: () => {
+        return ['复选框1', '复选框2', '复选框3']
+      }
+    },
+    allChecked: {
+      type: Boolean,
+      default: false
+    },
+    indeterminate: {
+      type: Boolean,
+      default: false
+    },
+    max: {
+      type: String,
+      default: '-1'
+    }
+  },
+  computed: {
+  },
+  created () {
+    this.checkBoxes = this.value
+    if (typeof this.value[0] === 'object') {
+      this.isObjectData = true
+    } else {
+      this.curValues = this.value.map((it) => {
+        return this.allChecked
+      })
+    }
+  },
+  data () {
+    return {
+      isObjectData: false,
+      checkBoxes: [],
+      curValues: [],
+      resultValues: []
+    }
+  },
+  watch: {
+    curValues (newVal, oldVal) {
+      this.resultValues = []
+      newVal.filter((it, index) => {
+        if (it) {
+          this.resultValues.push(this.checkBoxes[index])
         }
-      },
-      allChecked: {
-        type: Boolean,
-        default: false
-      },
-      indeterminate: {
-        type: Boolean,
-        default: false
-      },
-      max: {
-        type: String,
-        default: '-1'
-      }
-    },
-    computed: {
-    },
-    created () {
-      this.checkBoxes = this.value
-      if (typeof this.value[0] === 'object') {
-        this.isObjectData = true
-      } else {
-        this.curValues = this.value.map((it) => {
-          return this.allChecked
-        })
-      }
-    },
-    data () {
-      return {
-        isObjectData: false,
-        checkBoxes: [],
-        curValues: [],
-        resultValues: []
-      }
-    },
-    watch: {
-      curValues (newVal, oldVal) {
-//        console.log(newVal)
-        this.resultValues = []
-        newVal.filter((it, index) => {
-          if (it) {
-            this.resultValues.push(this.checkBoxes[index])
-          }
-        })
-        if (typeof max === 'number') {
-          if (max > 0) {
-            if (this.resultValues.length > +max) {
-              return
-            }
-          } else {
+      })
+      if (typeof this.max === 'number') {
+        if (this.max > 0) {
+          if (this.resultValues.length > +this.max) {
             return
           }
+        } else {
+          return
         }
-//        console.log(this.resultValues)
-        this.$emit('change', this.resultValues)
-      },
-      allChecked (newVal) {
-        if (this.indeterminate) return
-        let checkList = this.curValues.map((it) => {
-          return newVal
-        })
-        console.log(checkList, 333)
-        this.curValues = checkList
-//        if (newVal) {
-//          this.$emit('change', this.checkBoxes)
-//        } else {
-//          this.$emit('change', [])
-//        }
       }
+      //        console.log(this.resultValues)
+      this.$emit('change', this.resultValues)
     },
-    methods: {
-      bindAttrs (res) {
-        if (+this.max === -1) return
-        if (this.resultValues.length === +this.max && !res) {
-          return {'is_disabled': true}
-        }
+    allChecked (newVal) {
+      if (this.indeterminate) return
+      const checkList = this.curValues.map((it) => {
+        return newVal
+      })
+      this.curValues = checkList
+      //        if (newVal) {
+      //          this.$emit('change', this.checkBoxes)
+      //        } else {
+      //          this.$emit('change', [])
+      //        }
+    }
+  },
+  methods: {
+    bindAttrs (res) {
+      if (+this.max === -1) return
+      if (this.resultValues.length === +this.max && !res) {
+        return { is_disabled: true }
       }
     }
   }
+}
 </script>

@@ -10,38 +10,38 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      options: {
-        type: Array,
-        default: () => {
-          return [1, 2, 3, 4]
-        }
-      },
-      checkIndex: {
-        type: Number,
-        default: 0
+export default {
+  props: {
+    options: {
+      type: Array,
+      default: () => {
+        return [1, 2, 3, 4]
       }
     },
-    computed: {
-    },
-    created () {
-      this.indexNum = this.checkIndex
-    },
-    data () {
-      return {
-        indexNum: 0
-      }
-    },
-    methods: {
-      changeType (idx) {
-        this.indexNum = idx
-        this.$emit('input', idx)
-      }
-    },
-    mounted () {
-    },
-    updated () {
+    checkIndex: {
+      type: Number,
+      default: 0
     }
+  },
+  computed: {
+  },
+  created () {
+    this.indexNum = this.checkIndex
+  },
+  data () {
+    return {
+      indexNum: 0
+    }
+  },
+  methods: {
+    changeType (idx) {
+      this.indexNum = idx
+      this.$emit('input', idx)
+    }
+  },
+  mounted () {
+  },
+  updated () {
   }
+}
 </script>

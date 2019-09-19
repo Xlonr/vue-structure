@@ -1,7 +1,7 @@
 import pop from './Pop.vue'
 function popComponent (propsData, Vue) {
-  const popComponent = Vue.extend(pop)
-  return new popComponent({
+  const PopComponent = Vue.extend(pop)
+  return new PopComponent({
     el: document.createElement('div'),
     propsData
   })

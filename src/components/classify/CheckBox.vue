@@ -11,66 +11,66 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      icon: {
-        type: String,
-        default: 'icon-xuanzhong'
-      },
-      iconColor: {
-        type: String,
-        default: '#fff'
-      },
-      value: {
-        type: [Boolean, Array],
-        default: false
-      },
-      _dfValue: {
-        type: [String, Number],
-        default: ''
-      },
-      indeterminate: {
-        type: Boolean,
-        default: false
-      },
-      is_disabled: {
-        type: [Boolean, String],
-        default: false
-      },
-      text_color: {
-        type: String,
-        default: '#000'
-      }
+export default {
+  props: {
+    icon: {
+      type: String,
+      default: 'icon-xuanzhong'
     },
-    computed: {
+    iconColor: {
+      type: String,
+      default: '#fff'
     },
-    created () {
-      this.checked = this.value
+    value: {
+      type: [Boolean, Array],
+      default: false
     },
-    mounted () {
-      this.isDisabled = !!this.$el.getAttribute('disabled')
+    _dfValue: {
+      type: [String, Number],
+      default: ''
     },
-    data () {
-      return {
-        isDisabled: false,
-        isShow: false,
-        checked: false
-      }
+    indeterminate: {
+      type: Boolean,
+      default: false
     },
-    watch: {
-      checked (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.isShow = newVal
-          this.$emit('input', newVal)
-        }
-      },
-      value (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.checked = this.value
-        }
-      }
+    is_disabled: {
+      type: [Boolean, String],
+      default: false
     },
-    methods: {
+    text_color: {
+      type: String,
+      default: '#000'
     }
+  },
+  computed: {
+  },
+  created () {
+    this.checked = this.value
+  },
+  mounted () {
+    this.isDisabled = !!this.$el.getAttribute('disabled')
+  },
+  data () {
+    return {
+      isDisabled: false,
+      isShow: false,
+      checked: false
+    }
+  },
+  watch: {
+    checked (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.isShow = newVal
+        this.$emit('input', newVal)
+      }
+    },
+    value (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.checked = this.value
+      }
+    }
+  },
+  methods: {
   }
+}
 </script>

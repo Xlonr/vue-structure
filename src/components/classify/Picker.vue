@@ -37,121 +37,121 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      isCheck: {
-        type: Boolean,
-        default: false
-      },
-      isHover: {
-        type: Boolean,
-        default: false
-      },
-      isChooseTime: {
-        type: Boolean,
-        default: true
-      }
+export default {
+  props: {
+    isCheck: {
+      type: Boolean,
+      default: false
     },
-    computed: {
-      SurplusTime () {
-        let sTime = new Date(`${this.pYear}-${this.pMonths}-1`).getDay()
-        let year = this.pYear
-        let month = this.pMonths
-        if (this.pMonths <= 1) {
-          year -= 1
-          month = 12
+    isHover: {
+      type: Boolean,
+      default: false
+    },
+    isChooseTime: {
+      type: Boolean,
+      default: true
+    }
+  },
+  computed: {
+    SurplusTime () {
+      const sTime = new Date(`${this.pYear}-${this.pMonths}-1`).getDay()
+      let year = this.pYear
+      let month = this.pMonths
+      if (this.pMonths <= 1) {
+        year -= 1
+        month = 12
+      } else {
+        month -= 1
+      }
+      const dt = this.computeTotalDays({ cYear: year, cMonths: month, pYear: this.pYear, pMonths: this.pMonths })
+      this.frontDays = sTime
+      return this.frontDates(dt, sTime).reverse()
+    },
+    nextTimes () {
+      const totalDate = this.tDays + this.frontDays
+      const dnum = 7 - totalDate % 7
+      return this.frontDates(dnum, dnum).reverse()
+    }
+  },
+  beforeCreate () {
+  },
+  data () {
+    return {
+      weeks: ['日', '一', '二', '三', '四', '五', '六'],
+      tDays: 31,
+      pYear: new Date().getFullYear(),
+      pMonths: new Date().getMonth() + 1,
+      frontDays: 0,
+      cDate: '',
+      showCalendar: false,
+      toggleCalendar: false
+    }
+  },
+  methods: {
+    changeCalendar (val) {
+      const cYear = this.pYear
+      const cMonths = this.pMonths
+      if (val === 'prev') {
+        if (this.pMonths > 1) {
+          this.pMonths -= 1
+        } else if (this.pMonths <= 1) {
+          this.pYear -= 1
+          this.pMonths = 12
+        }
+        this.tDays = this.computeTotalDays({ cYear, cMonths, pYear: this.pYear, pMonths: this.pMonths })
+      } else {
+        if (this.pMonths >= 12) {
+          this.pMonths = 1
+          this.pYear += 1
         } else {
-          month -= 1
+          this.pMonths += 1
         }
-        let dt = this.computeTotalDays({cYear: year, cMonths: month, pYear: this.pYear, pMonths: this.pMonths})
-        this.frontDays = sTime
-        return this.frontDates(dt, sTime).reverse()
-      },
-      nextTimes () {
-        let totalDate = this.tDays + this.frontDays
-        let dnum = 7 - totalDate % 7
-        return this.frontDates(dnum, dnum).reverse()
+        this.tDays = this.computeTotalDays({ cYear: cMonths === 12 ? cYear + 1 : cYear, cMonths: cMonths === 12 ? 1 : cMonths + 1, pYear: this.pMonths === 12 ? this.pYear + 1 : this.pYear, pMonths: this.pMonths === 12 ? 1 : this.pMonths + 1 })
       }
     },
-    beforeCreate () {
+    computeTotalDays (item) {
+      const tatolDay = Math.abs(this.dateTimes({ year: item.cYear, month: item.cMonths }) - this.dateTimes({ year: item.pYear, month: item.pMonths }))
+      return tatolDay / 1000 / 60 / 60 / 24
     },
-    data () {
-      return {
-        weeks: ['日', '一', '二', '三', '四', '五', '六'],
-        tDays: 31,
-        pYear: new Date().getFullYear(),
-        pMonths: new Date().getMonth() + 1,
-        frontDays: 0,
-        cDate: '',
-        showCalendar: false,
-        toggleCalendar: false
-      }
+    dateTimes ({ year, month }) {
+      return new Date(`${year}-${month}-1`).getTime()
     },
-    methods: {
-      changeCalendar (val) {
-        let cYear = this.pYear
-        let cMonths = this.pMonths
-        if (val === 'prev') {
-          if (this.pMonths > 1) {
-            this.pMonths -= 1
-          } else if (this.pMonths <= 1) {
-            this.pYear -= 1
-            this.pMonths = 12
-          }
-          this.tDays = this.computeTotalDays({cYear, cMonths, pYear: this.pYear, pMonths: this.pMonths})
-        } else {
-          if (this.pMonths >= 12) {
-            this.pMonths = 1
-            this.pYear += 1
-          } else {
-            this.pMonths += 1
-          }
-          this.tDays = this.computeTotalDays({cYear: cMonths === 12 ? cYear + 1 : cYear, cMonths: cMonths === 12 ? 1 : cMonths + 1, pYear: this.pMonths === 12 ? this.pYear + 1 : this.pYear, pMonths: this.pMonths === 12 ? 1 : this.pMonths + 1})
-        }
-      },
-      computeTotalDays (item) {
-        let tatolDay = Math.abs(this.dateTimes({year: item.cYear, month: item.cMonths}) - this.dateTimes({year: item.pYear, month: item.pMonths}))
-        return tatolDay / 1000 / 60 / 60 / 24
-      },
-      dateTimes ({year, month}) {
-        return new Date(`${year}-${month}-1`).getTime()
-      },
-      frontDates (d, s) {
-        let r = d - s
-        let arr = []
-        while (d > r) {
-          arr.push(d)
-          d--
-        }
-        return arr
-      },
-      checkDate (val, day) {
-        this.changeCalendar(val)
-        this.selectDateTime(day)
-      },
-      selectDateTime (day) {
-        this.cDate = `${this.pYear}-${this.pMonths}-${day}`
-        this.showCalendar = false
-        this.$emit('dateTimes', this.cDate)
-      },
-      showPicker () {
-        this.showCalendar = !this.showCalendar
-      },
-      mouseHandler (val) {
-        if (!this.isHover) return
-        this.showCalendar = !!val
-      },
-      chooseTimes () {
-        this.toggleCalendar = true
+    frontDates (d, s) {
+      const r = d - s
+      const arr = []
+      while (d > r) {
+        arr.push(d)
+        d--
       }
+      return arr
     },
-    mounted () {
-      let el = this.$el.querySelector('._picker_slot')
-      if (this.isCheck) {
-        el.addEventListener('click', this.showPicker)
-      } else if (this.isHover) {
-        el.addEventListener('mouseenter', () => { this.mouseHandler(1) })
-      }
+    checkDate (val, day) {
+      this.changeCalendar(val)
+      this.selectDateTime(day)
+    },
+    selectDateTime (day) {
+      this.cDate = `${this.pYear}-${this.pMonths}-${day}`
+      this.showCalendar = false
+      this.$emit('dateTimes', this.cDate)
+    },
+    showPicker () {
+      this.showCalendar = !this.showCalendar
+    },
+    mouseHandler (val) {
+      if (!this.isHover) return
+      this.showCalendar = !!val
+    },
+    chooseTimes () {
+      this.toggleCalendar = true
+    }
+  },
+  mounted () {
+    const el = this.$el.querySelector('._picker_slot')
+    if (this.isCheck) {
+      el.addEventListener('click', this.showPicker)
+    } else if (this.isHover) {
+      el.addEventListener('mouseenter', () => { this.mouseHandler(1) })
     }
   }
+}
 </script>

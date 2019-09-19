@@ -1,59 +1,56 @@
 import { ujs } from '../../../main'
 
 export class Color {
-  constructor () {
-  }
-
   // hsv转换为rgb
   hsvToRgb (h, s, v) {
     let _r = 0
     let _g = 0
     let _b = 0
-    let index = parseInt((h / 60) % 6)
-    let n = h / 60 - index
+    const index = parseInt((h / 60) % 6)
+    const n = h / 60 - index
     v /= 100
     s /= 100
-    let _o = v * (1 - s)
-    let _p = v * (1 - n * s)
-    let _q = v * (1 - (1 - n) * s)
+    const _o = v * (1 - s)
+    const _p = v * (1 - n * s)
+    const _q = v * (1 - (1 - n) * s)
     switch (index) {
-      case 0:
-        _r = v
-        _g = _q
-        _b = _o
-        break
-      case 1:
-        _r = _p
-        _g = v
-        _b = _o
-        break
-      case 2:
-        _r = _o
-        _g = v
-        _b = _q
-        break
-      case 3:
-        _r = _o
-        _g = _p
-        _b = v
-        break
-      case 4:
-        _r = _q
-        _g = _o
-        _b = v
-        break
-      case 5:
-        _r = v
-        _g = _o
-        _b = _p
-        break
-      default:
-        break
+    case 0:
+      _r = v
+      _g = _q
+      _b = _o
+      break
+    case 1:
+      _r = _p
+      _g = v
+      _b = _o
+      break
+    case 2:
+      _r = _o
+      _g = v
+      _b = _q
+      break
+    case 3:
+      _r = _o
+      _g = _p
+      _b = v
+      break
+    case 4:
+      _r = _q
+      _g = _o
+      _b = v
+      break
+    case 5:
+      _r = v
+      _g = _o
+      _b = _p
+      break
+    default:
+      break
     }
     _r = parseInt(_r * 255.0)
     _g = parseInt(_g * 255.0)
     _b = parseInt(_b * 255.0)
-    return {_r, _g, _b}
+    return { _r, _g, _b }
   }
 
   // rgb转换为16进制
@@ -63,7 +60,7 @@ export class Color {
     } else if (/^(rgb|RGB)/.test(rgbColor)) {
       return this.composeHex(rgbColor.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(','))
     } else if (/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(rgbColor)) {
-      let num = rgbColor.replace(/#/, '').split('')
+      const num = rgbColor.replace(/#/, '').split('')
       if (num.length === 3) {
         return this.composeSixHex(num)
       } else if (num.length === 6) {
@@ -78,7 +75,7 @@ export class Color {
     let colorHex = '#'
     arr.forEach((num, index) => {
       if (index > 2) return
-      let hexNum = ('0' + Number(num).toString(16)).slice(-2)
+      const hexNum = ('0' + Number(num).toString(16)).slice(-2)
       colorHex += hexNum
     })
     return colorHex
@@ -101,7 +98,7 @@ export class Color {
         if (colorNum.length === 4) {
           colorNum = this.composeSixHex(colorNum.replace(/#/, ''))
         }
-        let result = Array.from({length: 3}).map((it, index) => {
+        const result = Array.from({ length: 3 }).map((it, index) => {
           return parseInt(`0x${colorNum.slice(index * 2 + 1, (index + 1) * 2 + 1)}`)
         })
         return `rgb(${result.join(',')})`

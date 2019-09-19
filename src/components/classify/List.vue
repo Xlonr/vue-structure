@@ -49,81 +49,81 @@
 
 <script>
 //  import Board from './classify/board.vue'
-  export default {
-    data () {
-      return {
-        msg: 'this is a message!',
-        itemType: false,
-        dfCont: '地点',
-        value: '',
-        isChecked: true,
-        checkIndex: 1,
-        radioConts: ['item1', 'item2', 'item3', 'item4'],
-        dt: ''
-      }
+export default {
+  data () {
+    return {
+      msg: 'this is a message!',
+      itemType: false,
+      dfCont: '地点',
+      value: '',
+      isChecked: true,
+      checkIndex: 1,
+      radioConts: ['item1', 'item2', 'item3', 'item4'],
+      dt: ''
+    }
+  },
+  methods: {
+    showItem () {
+      this._confirm({
+        content: '内容',
+        placement: 'center',
+        title: 'Title'
+      })
     },
-    methods: {
-      showItem () {
-        this._confirm({
-          content: '内容',
-          placement: 'center',
-          title: 'Title'
-        })
-      },
-      showItem1 () {
-        this._confirm({
-          content: '内容1',
-          placement: 'center'
-        })
-      },
-      showItem2 () {
-        this._confirm({
-          content: '内容2',
-          placement: 'center'
-        })
-      },
-      showTip (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_top',
-          autoClose: false,
-          name: el.target,
-          closable: false
-        })
-      },
-      showTip1 (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_right',
-          autoClose: false,
-          name: el.target,
-          closable: true
-        })
-      },
-      showTip2 (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_bottom',
-          autoClose: false,
-          name: el.target,
-          closable: true
-        })
-      },
-      showTip3 (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_left',
-          autoClose: false,
-          name: el.target,
-          closable: false
-        })
-      },
-      changeValue (val) {
-        this.dfCont = val
-      },
-      dateTimes (dt) {
-        this.dt = dt
-      }
+    showItem1 () {
+      this._confirm({
+        content: '内容1',
+        placement: 'center'
+      })
+    },
+    showItem2 () {
+      this._confirm({
+        content: '内容2',
+        placement: 'center'
+      })
+    },
+    showTip (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_top',
+        autoClose: false,
+        name: el.target,
+        closable: false
+      })
+    },
+    showTip1 (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_right',
+        autoClose: false,
+        name: el.target,
+        closable: true
+      })
+    },
+    showTip2 (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_bottom',
+        autoClose: false,
+        name: el.target,
+        closable: true
+      })
+    },
+    showTip3 (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_left',
+        autoClose: false,
+        name: el.target,
+        closable: false
+      })
+    },
+    changeValue (val) {
+      this.dfCont = val
+    },
+    dateTimes (dt) {
+      this.dt = dt
     }
   }
+}
 </script>

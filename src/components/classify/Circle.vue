@@ -8,85 +8,85 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      cirRadius: {
-        type: Number,
-        default: 50
-      },
-      defStrokeStyle: {
-        type: String,
-        default: '#ccc'
-      },
-      circleLineWidth: {
-        type: Number,
-        defalut: 5
-      },
-      processStrokeStyle: {
-        type: String,
-        default: '#4683ff'
-      },
-      processValue: {
-        type: Number,
-        default: 1
-      },
-      totalProcessValue: {
-        type: Number,
-        default: 100
-      }
+export default {
+  props: {
+    cirRadius: {
+      type: Number,
+      default: 50
     },
-    computed: {
-      circleSize () {
-        return {width: `${this.size}px`, height: `${this.size}px`}
-      }
+    defStrokeStyle: {
+      type: String,
+      default: '#ccc'
     },
-    created () {
+    circleLineWidth: {
+      type: Number,
+      defalut: 5
     },
-    mounted () {
-      this.showCircle()
+    processStrokeStyle: {
+      type: String,
+      default: '#4683ff'
     },
-    data () {
-      return {
-        circle: {
-          x: +this.cirRadius + this.circleLineWidth,
-          y: +this.cirRadius + this.circleLineWidth
-        },
-        usingStrokeStyle: this.defStrokeStyle,
-        size: this.cirRadius * 2 + this.circleLineWidth * 2,
-        avg: 1
-      }
+    processValue: {
+      type: Number,
+      default: 1
     },
-    watch: {
-      processValue (newVal) {
-        if (+newVal > +this.totalProcessValue) return
-        this.drawProcess()
-      }
-    },
-    methods: {
-      drawProcess () {
-        if (this.processValue === 0) return
-        this.usingStrokeStyle = this.processStrokeStyle
-        this.avg = this.processValue / this.totalProcessValue
-        this.showCircle(1)
+    totalProcessValue: {
+      type: Number,
+      default: 100
+    }
+  },
+  computed: {
+    circleSize () {
+      return { width: `${this.size}px`, height: `${this.size}px` }
+    }
+  },
+  created () {
+  },
+  mounted () {
+    this.showCircle()
+  },
+  data () {
+    return {
+      circle: {
+        x: +this.cirRadius + this.circleLineWidth,
+        y: +this.cirRadius + this.circleLineWidth
       },
-      showCircle (type) {
-        let dfCir = type === 1 ? this.$el.querySelector('#process_cirque') : this.$el.querySelector('#default_cirque')
-        if (!dfCir) return
-        let ctx = dfCir.getContext("2d")
-        ctx.save()
-//        ctx.rotate(Math.PI/2)
-        ctx.beginPath()
-        ctx.shadowColor = "#ddd"
-        ctx.shadowBlur = 10
-        ctx.lineCap = "round"
-        ctx.strokeStyle = this.usingStrokeStyle
-        ctx.lineWidth = this.circleLineWidth
-        ctx.clearRect(0, 0, this.size, this.size)
-//        ctx.rotate(Math.PI / 2)
-        ctx.arc(this.circle.x, this.circle.y, this.cirRadius, 0, 2 * Math.PI * (this.avg || 1))
-        ctx.stroke()
-        ctx.restore()
-      }
+      usingStrokeStyle: this.defStrokeStyle,
+      size: this.cirRadius * 2 + this.circleLineWidth * 2,
+      avg: 1
+    }
+  },
+  watch: {
+    processValue (newVal) {
+      if (+newVal > +this.totalProcessValue) return
+      this.drawProcess()
+    }
+  },
+  methods: {
+    drawProcess () {
+      if (this.processValue === 0) return
+      this.usingStrokeStyle = this.processStrokeStyle
+      this.avg = this.processValue / this.totalProcessValue
+      this.showCircle(1)
+    },
+    showCircle (type) {
+      const dfCir = type === 1 ? this.$el.querySelector('#process_cirque') : this.$el.querySelector('#default_cirque')
+      if (!dfCir) return
+      const ctx = dfCir.getContext('2d')
+      ctx.save()
+      //        ctx.rotate(Math.PI/2)
+      ctx.beginPath()
+      ctx.shadowColor = '#ddd'
+      ctx.shadowBlur = 10
+      ctx.lineCap = 'round'
+      ctx.strokeStyle = this.usingStrokeStyle
+      ctx.lineWidth = this.circleLineWidth
+      ctx.clearRect(0, 0, this.size, this.size)
+      //        ctx.rotate(Math.PI / 2)
+      ctx.arc(this.circle.x, this.circle.y, this.cirRadius, 0, 2 * Math.PI * (this.avg || 1))
+      ctx.stroke()
+      ctx.restore()
     }
   }
+}
 </script>

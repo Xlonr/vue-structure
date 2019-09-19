@@ -44,41 +44,41 @@
 </template>
 
 <script>
-  import {mapActions, mapGetters, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
-  export default {
-    data () {
-      return {
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    methods: {
-      ...mapActions ([
-      ]),
-      showItem () {
-        this._confirm({
-          content: '内容',
-          placement: 'center',
-          title: 'Title'
-        })
-      },
-      showItem1 () {
-        this._confirm({
-          content: '内容1',
-          placement: 'center'
-        })
-      },
-      showItem2 () {
-        this._confirm({
-          content: '内容2',
-          placement: 'center'
-        })
-      }
-    },
-    created () {
+export default {
+  data () {
+    return {
     }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  methods: {
+    ...mapActions([
+    ]),
+    showItem () {
+      this._confirm({
+        content: '内容',
+        placement: 'center',
+        title: 'Title'
+      })
+    },
+    showItem1 () {
+      this._confirm({
+        content: '内容1',
+        placement: 'center'
+      })
+    },
+    showItem2 () {
+      this._confirm({
+        content: '内容2',
+        placement: 'center'
+      })
+    }
+  },
+  created () {
   }
+}
 </script>

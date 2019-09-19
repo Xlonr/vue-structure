@@ -7,17 +7,17 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        num: 10,
-        msg: '111222'
-      }
-    },
-    methods: {
-      nextComp () {
-        console.log(this.msg)
-      }
+export default {
+  data () {
+    return {
+      num: 10,
+      msg: '111222'
+    }
+  },
+  methods: {
+    nextComp () {
+      console.log(this.msg)
     }
   }
+}
 </script>

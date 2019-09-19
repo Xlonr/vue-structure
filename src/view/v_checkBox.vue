@@ -23,54 +23,53 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
-  export default {
-    data () {
-      return {
-        isChecked: true,
-        isAllChecked: true,
-        indeterminate: false,
-        checkBoxList: [
-          {text: '复选框1', checked: false, value: '复选框1'},
-          {text: '复选框2', checked: true, value: '复选框2'},
-          {text: '复选框3', checked: true, value: '复选框3'}
-        ],
-        checkTargetList: ['复选框1', '复选框2', '复选框3'],
-        checkTargetList1: ['复选框1', '复选框2', '复选框3']
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    watch: {
-      isChecked (newVal, oldVal) {
-        console.log(newVal)
-      }
-    },
-    methods: {
-      ...mapActions ([
-      ]),
-      selectedCheckBoxList (val) {
-        if (val.length === this.checkTargetList.length) {
-          this.isAllChecked = true
-          this.indeterminate = false
-        } else {
-          if (val.length > 0) {
-            this.indeterminate = true
-          } else {
-            this.indeterminate = false
-          }
-          this.isAllChecked = false
-        }
-      },
-      changeCurrentCheckType () {
-        this.indeterminate = false
-      }
-    },
-    created () {
+export default {
+  data () {
+    return {
+      isChecked: true,
+      isAllChecked: true,
+      indeterminate: false,
+      checkBoxList: [
+        { text: '复选框1', checked: false, value: '复选框1' },
+        { text: '复选框2', checked: true, value: '复选框2' },
+        { text: '复选框3', checked: true, value: '复选框3' }
+      ],
+      checkTargetList: ['复选框1', '复选框2', '复选框3'],
+      checkTargetList1: ['复选框1', '复选框2', '复选框3']
     }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  watch: {
+    isChecked (newVal, oldVal) {
+      console.log(newVal)
+    }
+  },
+  methods: {
+    ...mapActions([
+    ]),
+    selectedCheckBoxList (val) {
+      if (val.length === this.checkTargetList.length) {
+        this.isAllChecked = true
+        this.indeterminate = false
+      } else {
+        if (val.length > 0) {
+          this.indeterminate = true
+        } else {
+          this.indeterminate = false
+        }
+        this.isAllChecked = false
+      }
+    },
+    changeCurrentCheckType () {
+      this.indeterminate = false
+    }
+  },
+  created () {
   }
+}
 </script>

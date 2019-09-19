@@ -14,31 +14,30 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
-  export default {
-    data () {
-      return {
-        aTime: 100,
-        cTime: 1
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    methods: {
-      ...mapActions ([
-      ])
-    },
-    mounted () {
-      let t = setInterval(() => {
-        this.cTime += 1
-        if (this.cTime === this.aTime) {
-          clearTimeout(t)
-        }
-      }, 1000)
+export default {
+  data () {
+    return {
+      aTime: 100,
+      cTime: 1
     }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  methods: {
+    ...mapActions([
+    ])
+  },
+  mounted () {
+    const t = setInterval(() => {
+      this.cTime += 1
+      if (this.cTime === this.aTime) {
+        clearTimeout(t)
+      }
+    }, 1000)
   }
+}
 </script>

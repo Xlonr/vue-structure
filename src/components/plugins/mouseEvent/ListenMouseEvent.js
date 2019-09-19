@@ -1,40 +1,60 @@
-const {EmitClass} = require('ujs_js')
+const { EmitClass } = require('ujs_js')
 
 export class ListenMouseEvent extends EmitClass {
   constructor (config) {
     super()
     this.element = config.element
+    this.parentElement = config.parentElement || ''
+    this.allowClick = config.allowClick || false
     this.mouseDownPos = {
       x: 0,
       y: 0
     }
-    this.mouseMovePos = {
-      x: 0,
-      y: 0
-    }
-    this.emitEvents = ['mouseDownEvent', 'mouseMoveEvent']
+    this.firstMouseDown = false
+    this.openMove = false
+    this.emitEvents = ['distance']
     this.init()
-    // this.mouseDownEvent = this.mouseDownEvent.bind(this)
+
     this.mouseMoveEvent = this.mouseMoveEvent.bind(this)
     this.mouseUpEvent = this.mouseUpEvent.bind(this)
     this.dragEvent = this.dragEvent.bind(this)
   }
 
   init () {
-    this.element.addEventListener('mousedown', (e) => this.mouseDownEvent(e, this))
-    this.element.onselectstart = () => { return false }
+    if (this.element) {
+      this.element.addEventListener('mousedown', (e) => this.mouseDownEvent(e, this))
+      this.element.onselectstart = () => {
+        return false
+      }
+    }
+    if (this.allowClick && this.parentElement) {
+      const { w, h } = this.getElementSize(this.element)
+      this.parentElement.onclick = (e) => {
+        e.stopPropagation()
+        if (this.openMove) return
+        this.emit('distance', { x: e.offsetX - w / 2, y: e.offsetY - h / 2 })
+      }
+    }
   }
 
   bind (name, fn) {
     this.on(name, fn)
   }
 
+  getElementSize (element) {
+    return {
+      w: element.offsetWidth,
+      h: element.offsetHeight
+    }
+  }
+
   mouseDownEvent (e, self) {
-    console.log(self)
-    // this.mouseDownPos.x = e.clientX
-    // this.mouseDownPos.y = e.clientY
     self._listenEvents()
-    self.emit('mouseDownEvent', {x: e.clientX, y: e.clientY})
+    if (this.firstMouseDown) return
+    self.mouseDownPos.x = e.clientX
+    self.mouseDownPos.y = e.clientY
+    this.firstMouseDown = true
+    // self.emit('mouseDownEvent', {x: e.clientX, y: e.clientY})
   }
 
   _listenEvents () {
@@ -44,7 +64,8 @@ export class ListenMouseEvent extends EmitClass {
   }
 
   mouseMoveEvent (e) {
-    this.emit('mouseMoveEvent', {x: e.clientX, y: e.clientY})
+    this.openMove = true
+    this.emit('distance', { x: e.clientX - this.mouseDownPos.x, y: e.clientY - this.mouseDownPos.y })
   }
 
   dragEvent () {
@@ -52,6 +73,9 @@ export class ListenMouseEvent extends EmitClass {
   }
 
   mouseUpEvent () {
+    setTimeout(() => {
+      this.openMove = false
+    }, 500)
     this._removeListenEvent()
   }
 

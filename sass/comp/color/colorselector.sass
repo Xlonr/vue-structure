@@ -11,12 +11,12 @@
   background: #ffffff
 
   &.drop-down_enter
-    @include def_animation(drop_element_enter, 1s, linear forwards, 0s)
+    @include def_animation(drop_element_enter, .5s, linear forwards, 0s)
 
   &.drop-down_leave
-    @include def_animation(drop_element_leave, 1s, linear forwards, 0s)
+    @include def_animation(drop_element_leave, .5s, linear forwards, 0s)
 
-  .color_board
+  .color-board
     width: 100%
     height: 180px
     position: relative
@@ -89,11 +89,13 @@
 
   .color-selector-value
     height: 20px
+    width: 140px
     margin-top: 10px
     border: 1px solid #dddddd
     outline: none
     padding: 0 5px
     color: #cccccc
+    box-sizing: border-box
     @include radius(5px)
 
   .color-selector-text
@@ -102,6 +104,10 @@
 
   .color-selector-footer
     margin-top: 10px
+
+
+.color-selector_mouse
+  display: inline-block
 
 @keyframes drop_element_enter
   0%

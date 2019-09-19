@@ -11,43 +11,43 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      isChecked: {
-        type: Boolean,
-        default: false
-      },
-      isToggle: {
-        type: Boolean,
-        default: false
-      },
-      type: {
-        type: String,
-        default: 'def'
-      }
+export default {
+  props: {
+    isChecked: {
+      type: Boolean,
+      default: false
     },
-    computed: {
+    isToggle: {
+      type: Boolean,
+      default: false
     },
-    created () {
-      this.isShow = this.isChecked
-    },
-    data () {
-      return {
-        isShow: true
-      }
-    },
-    methods: {
-      changeType () {
-        if (!this.isToggle) {
-          this.isShow = true
-        } else {
-          this.isShow = !this.isShow
-        }
-        this.$emit('input', this.isShow)
-      }
-    },
-    mounted () {
-      console.log(this.isChecked, 22222)
+    type: {
+      type: String,
+      default: 'def'
     }
+  },
+  computed: {
+  },
+  created () {
+    this.isShow = this.isChecked
+  },
+  data () {
+    return {
+      isShow: true
+    }
+  },
+  methods: {
+    changeType () {
+      if (!this.isToggle) {
+        this.isShow = true
+      } else {
+        this.isShow = !this.isShow
+      }
+      this.$emit('input', this.isShow)
+    }
+  },
+  mounted () {
+    console.log(this.isChecked, 22222)
   }
+}
 </script>

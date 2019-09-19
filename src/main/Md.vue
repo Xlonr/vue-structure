@@ -7,35 +7,36 @@
 
 <script>
 
-  import {mapActions, mapGetters, mapState} from 'vuex'
-  export default {
-    data () {
-      return {
-        showMd: false
-      }
-    },
-    props: {
-      mdCont: {
-        type: String,
-        default: ''
-      }
-    },
-    watch: {
-      '$route.name': function (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.showMd = false
-        }
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    methods: {
-      ...mapActions ([
-      ]),
-    },
-    created () {
+import { mapActions, mapState } from 'vuex'
+
+export default {
+  data () {
+    return {
+      showMd: false
     }
+  },
+  props: {
+    mdCont: {
+      type: String,
+      default: ''
+    }
+  },
+  watch: {
+    '$route.name': function (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.showMd = false
+      }
+    }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  methods: {
+    ...mapActions([
+    ])
+  },
+  created () {
   }
+}
 </script>

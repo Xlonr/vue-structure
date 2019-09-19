@@ -48,6 +48,16 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.(vue|js)/,
+        use: ['eslint-loader'],
+        exclude: /node_modules/,
+        enforce: 'pre',
+        include: [resolve('src')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
+      {
         test: /\.(png|jpg|gif|svg|woff|ttf|eot)$/,
         // loader: 'url-loader?limit=8192&name=asset',
         // options: {
@@ -77,7 +87,7 @@ module.exports = {
     // }),
     new HtmlWebpackPlugin({
       filename: './index.html',
-      template: path.resolve(__dirname,  './src/index.html'),
+      template: path.resolve(__dirname, './src/index.html'),
       inject: true,   // script引用放在body之后  true、body、head
       minify: {
         removeAttributeQuotes: true   // html压缩去除引号

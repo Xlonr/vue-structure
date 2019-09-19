@@ -11,26 +11,25 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
-  export default {
-    data () {
-      return {
-        isChecked: true,
-        checkIndex: 1,
-        radioConts: ['item1', 'item2', 'item3', 'item4']
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    methods: {
-      ...mapActions ([
-      ]),
-    },
-    created () {
+export default {
+  data () {
+    return {
+      isChecked: true,
+      checkIndex: 1,
+      radioConts: ['item1', 'item2', 'item3', 'item4']
     }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  methods: {
+    ...mapActions([
+    ])
+  },
+  created () {
   }
+}
 </script>

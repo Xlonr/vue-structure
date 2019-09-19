@@ -7,43 +7,43 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      input_type: {
-        type: String,
-        default: 'text'
-      },
-      input_text: {
-        type: String,
-        default: '...'
-      },
-      input_title: {
-        type: String,
-        default: ''
-      },
-      title_direct: {
-        type: String,
-        default: 'left'
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      value: {
-        type: String,
-        default: ''
-      }
+export default {
+  props: {
+    input_type: {
+      type: String,
+      default: 'text'
     },
-    data () {
-      return {
-      }
+    input_text: {
+      type: String,
+      default: '...'
     },
-    methods: {
-      inputValue (e) {
-        this.$emit('input', e.target.value)
-      }
+    input_title: {
+      type: String,
+      default: ''
     },
-    mounted () {
+    title_direct: {
+      type: String,
+      default: 'left'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    value: {
+      type: String,
+      default: ''
     }
+  },
+  data () {
+    return {
+    }
+  },
+  methods: {
+    inputValue (e) {
+      this.$emit('input', e.target.value)
+    }
+  },
+  mounted () {
   }
+}
 </script>

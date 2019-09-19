@@ -7,24 +7,23 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
-  export default {
-    data () {
-      return {
-        value: ''
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    methods: {
-      ...mapActions ([
-      ])
-    },
-    created () {
+export default {
+  data () {
+    return {
+      value: ''
     }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  methods: {
+    ...mapActions([
+    ])
+  },
+  created () {
   }
+}
 </script>

@@ -4,18 +4,18 @@
   </div>
 </template>
 <script>
-  export default {
-    props: {
-    },
-    data () {
-      return {
-      }
-    },
-    computed: {
-    },
-    beforeMount () {
-    },
-    methods: {
+export default {
+  props: {
+  },
+  data () {
+    return {
     }
+  },
+  computed: {
+  },
+  beforeMount () {
+  },
+  methods: {
   }
+}
 </script>

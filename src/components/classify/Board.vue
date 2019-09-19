@@ -5,11 +5,11 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        num: 10
-      }
+export default {
+  data () {
+    return {
+      num: 10
     }
   }
+}
 </script>

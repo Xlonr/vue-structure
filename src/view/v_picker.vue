@@ -11,26 +11,26 @@
 </template>
 
 <script>
-  import {mapActions, mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
-  export default {
-    data () {
-      return {
-        dt: ''
-      }
-    },
-    computed: {
-      ...mapState([
-      ])
-    },
-    methods: {
-      ...mapActions ([
-      ]),
-      dateTimes (dt) {
-        this.dt = dt
-      }
-    },
-    created () {
+export default {
+  data () {
+    return {
+      dt: ''
     }
+  },
+  computed: {
+    ...mapState([
+    ])
+  },
+  methods: {
+    ...mapActions([
+    ]),
+    dateTimes (dt) {
+      this.dt = dt
+    }
+  },
+  created () {
   }
+}
 </script>

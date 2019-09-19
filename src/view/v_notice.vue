@@ -8,53 +8,51 @@
 </template>
 
 <script>
-//  import List from './list.vue'
-  import {mapActions, mapGetters, mapState} from 'vuex'
 
-  export default {
-    data () {
-      return {
-      }
-    },
-    methods: {
-      showTip (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_top',
-          autoClose: true,
-          name: el.target,
-          closable: false
-        })
-      },
-      showTip1 (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_right',
-          autoClose: false,
-          name: el.target,
-          closable: true
-        })
-      },
-      showTip2 (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_bottom',
-          autoClose: false,
-          name: el.target,
-          closable: true
-        })
-      },
-      showTip3 (el) {
-        this.$_popOver({
-          popContent: '弹出提示内容',
-          direction: 'is_left',
-          autoClose: false,
-          name: el.target,
-          closable: false
-        })
-      }
-    },
-    created () {
+export default {
+  data () {
+    return {
     }
+  },
+  methods: {
+    showTip (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_top',
+        autoClose: true,
+        name: el.target,
+        closable: false
+      })
+    },
+    showTip1 (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_right',
+        autoClose: false,
+        name: el.target,
+        closable: true
+      })
+    },
+    showTip2 (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_bottom',
+        autoClose: false,
+        name: el.target,
+        closable: true
+      })
+    },
+    showTip3 (el) {
+      this.$_popOver({
+        popContent: '弹出提示内容',
+        direction: 'is_left',
+        autoClose: false,
+        name: el.target,
+        closable: false
+      })
+    }
+  },
+  created () {
   }
+}
 </script>

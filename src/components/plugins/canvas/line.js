@@ -30,18 +30,14 @@ class PrinterCircle {
     canvas.style.position = 'absolute'
     this.parentElement.appendChild(canvas)
     this.ctx = canvas.getContext('2d')
-    this.points = Array.from({length: this.counts}).map(this.setPoints.bind(this))
+    this.points = Array.from({ length: this.counts }).map(this.setPoints.bind(this))
     window.addEventListener('resize', this.resizeScreen.bind(this))
     window.addEventListener('mousemove', this.mouseMoveEvent)
-    window.addEventListener('blur', () => {
-      this.mouseEnterActive = false
-    })
-    window.addEventListener('focus', () => {
-      this.mouseEnterActive = true
-    })
-    // this.parentElement.addEventListener('mouseout', () => {
+    // window.addEventListener('blur', () => {
     //   this.mouseEnterActive = false
-    //   // window.removeEventListener('mousemove', this.mouseMoveEvent)
+    // })
+    // window.addEventListener('focus', () => {
+    //   this.mouseEnterActive = true
     // })
     window.addEventListener('mouseleave', () => {
       console.log(44444)
@@ -61,19 +57,19 @@ class PrinterCircle {
   drawPoints () {
     this.points = this.filterOutPoints()
     if (this.points.length < this.counts) {
-      this.points = [...this.points, ...Array.from({length: this.counts - this.points.length}).map(this.setPoints.bind(this))]
+      this.points = [...this.points, ...Array.from({ length: this.counts - this.points.length }).map(this.setPoints.bind(this))]
     }
     this.points.forEach((it, index) => {
       this.ctx.beginPath()
       this.ctx.arc(it.x, it.y, it.r, 0, Math.PI * 2, false)
       this.ctx.fillStyle = this.color
       this.ctx.fill()
-      console.log(this.mouseEnterActive)
+      // console.log(this.mouseEnterActive)
       if (this.mouseEnterActive) {
-        let disX = this.mousePos.x - it.x
-        let disY = this.mousePos.y - it.y
-        let reg = Math.abs(disX / disY)
-        let x = it.rateX * this.rate
+        const disX = this.mousePos.x - it.x
+        const disY = this.mousePos.y - it.y
+        const reg = Math.abs(disX / disY)
+        const x = it.rateX * this.rate
         if (disX > 0 && disY > 0) {
           it.x += x
           it.y += x / reg
@@ -109,7 +105,7 @@ class PrinterCircle {
     while (len++ < this.points.length) {
       this.points.forEach((it, index) => {
         if (index !== len) {
-          let lan = this.distance(this.points[len - 1].x || 0, it.x, this.points[len - 1].y, it.y)
+          const lan = this.distance(this.points[len - 1].x || 0, it.x, this.points[len - 1].y, it.y)
           if (lan > this.width / 4) return
           this.ctx.beginPath()
           this.ctx.lineWidth = Math.ceil(this.lineWidth / lan).toFixed(3)
@@ -129,7 +125,7 @@ class PrinterCircle {
     this.ctx.clearRect(0, 0, this.width, this.height)
     this.drawPoints()
     this.drawLines()
-    window.requestAnimationFrame(() => {this.drawStart()})
+    window.requestAnimationFrame(() => { this.drawStart() })
   }
 
   resizeScreen () {

@@ -2,18 +2,18 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as mutations from './mutations'
-import {state} from './state'
-import {Directive} from "../../service/Directive"
+import { state } from './state'
+// import { Directive } from '../../service/Directive'
 
 Vue.use(Vuex)
 
-let store = {
+const store = {
   actions,
   mutations,
   state
 }
 
-let vx = new Vuex.Store({
+const vx = new Vuex.Store({
   ...store,
   strict: true
 })

@@ -31,50 +31,50 @@
 </template>
 
 <script>
-  export default {
-    props: {
-    },
-    computed: {
-    },
-    beforeCreate () {
-    },
-    data () {
-      return {
-        hours: '00',
-        minutes: '00',
-        isChangeHour: true,
-        isChangeMinutes: true
+export default {
+  props: {
+  },
+  computed: {
+  },
+  beforeCreate () {
+  },
+  data () {
+    return {
+      hours: '00',
+      minutes: '00',
+      isChangeHour: true,
+      isChangeMinutes: true
+    }
+  },
+  watch: {
+    hours (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.isChangeHour = false
+        setTimeout(() => {
+          this.isChangeHour = true
+        }, 800)
       }
     },
-    watch: {
-      hours (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.isChangeHour = false
-          setTimeout(() => {
-            this.isChangeHour = true
-          }, 800)
-        }
-      },
-      minutes (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.isChangeMinutes = false
-          setTimeout(() => {
-              this.isChangeMinutes = true
-          }, 800)
-        }
-      }
-    },
-    created () {
-      setInterval(() => {
-        this.changeTime()
-      }, 1000)
-    },
-    methods: {
-      changeTime () {
-        let dt = new Date()
-        this.hours = dt.getHours()
-        this.minutes = dt.getMinutes()
+    minutes (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.isChangeMinutes = false
+        setTimeout(() => {
+          this.isChangeMinutes = true
+        }, 800)
       }
     }
+  },
+  created () {
+    setInterval(() => {
+      this.changeTime()
+    }, 1000)
+  },
+  methods: {
+    changeTime () {
+      const dt = new Date()
+      this.hours = dt.getHours()
+      this.minutes = dt.getMinutes()
+    }
   }
+}
 </script>
