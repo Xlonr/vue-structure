@@ -18,6 +18,7 @@ import Timer from './clock/Timer'
 import CirQue from './Circle'
 import WaterMark from './process/WaterMark'
 import ColorSelector from './color/ColorSelector'
+import { PageArrow, Pagination, PageButton } from './pagination/index'
 
 export {
   Board,
@@ -36,5 +37,8 @@ export {
   Timer,
   CirQue,
   WaterMark,
-  ColorSelector
+  ColorSelector,
+  PageArrow,
+  Pagination,
+  PageButton
 }

@@ -25,7 +25,8 @@ export default {
         { text: '进度 (process)', path: '/vProcess' },
         { text: '时钟 (clock)', path: '/vClock' },
         { text: '圆环进度 (cirque)', path: '/vCirqueProcess' },
-        { text: '颜色选择器 (color)', path: '/vColor' }
+        { text: '颜色选择器 (color)', path: '/vColor' },
+        { text: '分页（page）', path: '/vPage' }
       ],
       activeIndex: 0
     }

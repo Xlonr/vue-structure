@@ -1,0 +1,85 @@
+$def_pagination_medium: 20
+$def_pagination_font: 16
+$def_pagination_bg_color: #ddd
+$def_pagination_num_active_color: #346bff
+
+.pagination
+  .pagination-bg
+    display: flex
+
+    .pagination-bg_num
+      width: $def_pagination_medium + px
+      height: $def_pagination_medium + px
+      color: #232323
+      text-align: center
+      vertical-align: middle
+      cursor: pointer
+      font-size: $def_pagination_font + px
+      @include radius(2px)
+
+      &:hover
+        background: $def_pagination_bg_color
+        color: #ffffff
+
+      &.active
+        color: $def_pagination_num_active_color
+
+      &.disabled
+        color: #cccccc
+        //pointer-events: none
+        cursor: not-allowed
+
+        &:hover
+          background: transparent
+
+  &.is_larger
+    .pagination-bg_num
+      width: $def_pagination_medium * 1.2 + px
+      height: $def_pagination_medium * 1.2 + px
+      font-size: $def_pagination_font * 1.2 + px
+
+    .pagination-operator
+      font-size: $def_pagination_font * 1.2 + px
+
+      .pagination-operator_btn
+        width: ($def_pagination_medium + 40) * 1.2 + px
+        height: $def_pagination_medium * 1.2 + px
+        font-size: $def_pagination_font * 1.2 + px
+        line-height: $def_pagination_medium * 1.2 + px
+
+  &.is_small
+    .pagination-bg_num
+      width: $def_pagination_medium * 0.8 + px
+      height: $def_pagination_medium * 0.8 + px
+      font-size: $def_pagination_font * 0.8 + px
+
+    .pagination-operator
+      font-size: $def_pagination_font * 0.8 + px
+
+      .pagination-operator_btn
+        width: ($def_pagination_medium + 40) * 0.8 + px
+        height: $def_pagination_medium * 0.8 + px
+        font-size: $def_pagination_font * 0.8 + px
+        line-height: $def_pagination_medium * 0.8 + px
+
+  .pagination-operator
+    color: #232323
+    font-size: $def_pagination_font + px
+    display: flex
+
+    .pagination-operator_arrow
+      margin: 1px 5px 0 5px
+      cursor: pointer
+
+    .pagination-operator_btn
+      width: $def_pagination_medium + 40 + px
+      height: $def_pagination_medium + px
+      font-size: $def_pagination_font + px
+      border: 1px solid #dddddd
+      color: #232323
+      cursor: pointer
+      margin: 0 5px
+      text-align: center
+      line-height: $def_pagination_medium + px
+      @include def_user_select(none)
+      @include radius(3px)
