@@ -49,13 +49,15 @@ module.exports = {
       },
       {
         test: /\.(vue|js)/,
-        use: ['eslint-loader'],
+        use: {
+	  loader: 'eslint-loader', 
+          options: {
+            formatter: require('eslint-friendly-formatter')
+          }
+	},
         exclude: /node_modules/,
         enforce: 'pre',
-        include: [resolve('src')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
+        include: /src/ 
       },
       {
         test: /\.(png|jpg|gif|svg|woff|ttf|eot)$/,
