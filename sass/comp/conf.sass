@@ -48,7 +48,11 @@ $def_circle_size: 35
   -webkit-user-drag: $type
 
 @mixin def_animation ($name, $time, $other, $delayTime: 0s)
-  -webkit-animation: $name $time $other
-  animation: $name $time $other
-  -webkit-animation-delay: $delayTime
-  animation-delay: $delayTime
+  @if $delayTime == 0s
+    -webkit-animation: $name $time $other
+    animation: $name $time $other
+  @else
+    -webkit-animation: $name $time $other
+    animation: $name $time $other
+    -webkit-animation-delay: $delayTime
+    animation-delay: $delayTime

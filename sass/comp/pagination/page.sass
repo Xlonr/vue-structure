@@ -2,8 +2,12 @@ $def_pagination_medium: 20
 $def_pagination_font: 16
 $def_pagination_bg_color: #ddd
 $def_pagination_num_active_color: #346bff
+$def_pagination_input_size: 40
 
 .pagination
+  display: flex
+  align-items: center
+
   .pagination-bg
     display: flex
 
@@ -15,6 +19,7 @@ $def_pagination_num_active_color: #346bff
       vertical-align: middle
       cursor: pointer
       font-size: $def_pagination_font + px
+      margin-left: 3px
       @include radius(2px)
 
       &:hover
@@ -47,6 +52,13 @@ $def_pagination_num_active_color: #346bff
         font-size: $def_pagination_font * 1.2 + px
         line-height: $def_pagination_medium * 1.2 + px
 
+    .pagination-jump
+      font-size: $def_pagination_font * 1.2 + px
+
+      input[type=number]
+        width: $def_pagination_input_size * 1.2 + px
+        font-size: $def_pagination_font * 1.2 + px
+
   &.is_small
     .pagination-bg_num
       width: $def_pagination_medium * 0.8 + px
@@ -61,6 +73,27 @@ $def_pagination_num_active_color: #346bff
         height: $def_pagination_medium * 0.8 + px
         font-size: $def_pagination_font * 0.8 + px
         line-height: $def_pagination_medium * 0.8 + px
+
+    .pagination-jump
+      font-size: $def_pagination_font * 0.8 + px
+
+      input[type=number]
+        width: $def_pagination_input_size * 0.8 + px
+        font-size: $def_pagination_font * 0.8 + px
+
+  .pagination-jump
+    border: 1px solid #ddd
+    padding: 0 5px
+    box-sizing: border-box
+    font-size: $def_pagination_font + px
+    @include radius(3px)
+
+    input[type=number]
+      width: $def_pagination_input_size + px
+      border: none
+      text-align: center
+      outline: none
+      @include def_user_select(none)
 
   .pagination-operator
     color: #232323
