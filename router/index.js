@@ -17,6 +17,7 @@ import vClock from '../src/view/v_clock.vue'
 import vCirqueProcess from '../src/view/v_cirque_process.vue'
 import vColor from '../src/view/v_color.vue'
 import vPagination from '../src/view/v_page'
+import vFlow from '../src/view/v_flow'
 
 Vue.use(Router)
 
@@ -90,6 +91,11 @@ export default new Router({
       path: '/vPage',
       name: 'page',
       component: vPagination
+    },
+    {
+      path: '/vFlow',
+      name: 'flow',
+      component: vFlow
     }
   ]
 })

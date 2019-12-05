@@ -31,7 +31,7 @@ export default {
     _changeMarkdown () {
       const routeName = this.$route.name
       const firstChar = routeName.slice(0, 1).toUpperCase()
-      const mdName = `m${firstChar}${routeName.slice(1, )}`
+      const mdName = `m${firstChar}${routeName.slice(1 )}`
 
       return md[mdName]
     }

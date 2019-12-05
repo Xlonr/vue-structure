@@ -29,7 +29,8 @@ module.exports = {
       "generators": true, // es6 generators 方法
       "templateStrings": true, // 模板字符串
       "superInFunctions": true,
-      "experimentalObjectRestSpread": true // 对象的扩展运算符
+      "experimentalObjectRestSpread": true, // 对象的扩展运算符
+      "legacyDecorators": true
     },
     "parser": "babel-eslint"
   },
