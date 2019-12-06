@@ -1,7 +1,7 @@
 /**
  * Created by XLON on 2017/9/10.
  */
-// import '@babel/polyfill'
+import '@babel/polyfill'
 import Vue from 'vue'
 import App from './components/app.vue'
 import { tipComponent } from './components/plugins/tip/index'

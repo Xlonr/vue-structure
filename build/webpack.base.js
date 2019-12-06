@@ -36,10 +36,24 @@ module.exports = {
         include: [path.resolve(__dirname, '../src/')] 
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      {
         test: /\.sass$/,
         use: [
+          'style-loader',
           MiniCSSExtractPlugin.loader,
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: 'postcss.config.js'
+              }
+            }
+          },
           {
             loader: 'sass-loader',
             options: {
@@ -48,18 +62,6 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.sass$/,
-      //   // fallback: 'style-loader',
-      //   use:['vue-style-loader', 'css-loader', {
-      //     loader: 'sass-loader',
-      //     options: {
-      //       sassOptions: {
-      //         indentedSyntax: true
-      //       }
-      //     }
-      //   }]
-      // },
       {
         test: /\.js$/,
         use: ['babel-loader'],
@@ -93,7 +95,7 @@ module.exports = {
   },
   plugins: [
     new MiniCSSExtractPlugin({
-      filename: 'app.css',
+      filename: 'css/app.[contenthash].css',
       // allChunks: true
     }),
     new HtmlWebpackPlugin({
