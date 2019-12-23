@@ -6,6 +6,9 @@
     <div class="cirque_process">
       <water-mark :currentValue="currentValue" :totalValue="100"/>
     </div>
+    <div class="cirque_process">
+      <battery />
+    </div>
   </div>
 </template>
 

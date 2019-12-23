@@ -17,6 +17,7 @@ import CalendarTime from './clock/CalendarTime'
 import Timer from './clock/Timer'
 import CirQue from './Circle'
 import WaterMark from './process/WaterMark'
+import Battery from './process/Battery'
 import ColorSelector from './color/ColorSelector'
 import { PageArrow, Pagination, PageButton } from './pagination/index'
 import Flow from './flow/Flow'
@@ -38,6 +39,7 @@ export {
   Timer,
   CirQue,
   WaterMark,
+  Battery,
   ColorSelector,
   PageArrow,
   Pagination,
