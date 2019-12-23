@@ -18,10 +18,11 @@ import vCirqueProcess from '../src/view/v_cirque_process.vue'
 import vColor from '../src/view/v_color.vue'
 import vPagination from '../src/view/v_page'
 import vFlow from '../src/view/v_flow'
+import { nextTick } from 'q'
 
 Vue.use(Router)
 
-export default new Router({
+const vueRouter =  new Router({
   routes: [
     {
       path: '/',
@@ -33,7 +34,7 @@ export default new Router({
       name: 'btn',
       component: vBtn,
       beforeEnter (to, from, next) {
-        console.log(to)
+        // console.log(to, from)
         next()
       }
     },
@@ -99,3 +100,10 @@ export default new Router({
     }
   ]
 })
+
+vueRouter.beforeEach((to, from , next) => {
+  // console.log(to, from, 1111)
+  next()
+})
+
+export default vueRouter

@@ -5,7 +5,7 @@
   display: flex
   align-items: center
   justify-content: center
-  filter: contrast(15) hue-rotate(0)
+  filter: contrast(200%) hue-rotate(0)
   animation: _hueRotate 10s infinite linear
   background: $def_black_color
 
@@ -26,7 +26,7 @@
     &::before
       content: ''
       position: absolute
-      width: 57%
+      width: 56%
       height: 57%
       top: 46%
       left: 50%
@@ -49,7 +49,7 @@
 
 @keyframes _hueRotate
   100%
-    filter: contrast(15) hue-rotate(360deg)
+    filter: contrast(200%) hue-rotate(360deg)
 
 @keyframes _rotate_bg
   50%

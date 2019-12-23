@@ -2,7 +2,7 @@
   <div class="menu">
     <span class="title">Components</span>
     <ul class="menu_list">
-      <li :class="['menu_item', {'active': activeIndex === index}]" v-for="(it, index) in menuList" :key="index" @click="$router.push(it.path), activeIndex = index">{{ it.text }}</li>
+      <li :class="['menu_item', {'active': $route.path === it.path}]" v-for="(it, index) in menuList" :key="index" @click="$router.push(it.path)">{{ it.text }}</li>
     </ul>
   </div>
 </template>
@@ -28,8 +28,7 @@ export default {
         { text: '颜色选择器 (color)', path: '/vColor' },
         { text: '分页（page）', path: '/vPage' },
         { text: '懒加载（flow）', path: '/vFlow' }
-      ],
-      activeIndex: 0
+      ]
     }
   },
   computed: {
