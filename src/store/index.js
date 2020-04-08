@@ -3,12 +3,16 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as mutations from './mutations'
 import { state } from './state'
+import * as xlsxActions from './xlsx/actions'
 // import { Directive } from '../../service/Directive'
 
 Vue.use(Vuex)
 
 const store = {
-  actions,
+  actions: {
+    ...actions,
+    ...xlsxActions
+  },
   mutations,
   state
 }

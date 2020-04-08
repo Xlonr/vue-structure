@@ -12,7 +12,7 @@ import { connectSocket } from '../service/socket'
 import { notices } from './components/plugins/notice/index'
 import { popOver } from './components/plugins/pop/index'
 import '../sass/index.sass'
-import ujs from 'ujs_js'
+import ujs from 'ujs_js/ujs'
 import { Color } from './components/plugins/color/color'
 
 Vue.config.debug = true

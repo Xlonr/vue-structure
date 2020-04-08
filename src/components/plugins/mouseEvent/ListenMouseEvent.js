@@ -1,4 +1,4 @@
-const { EmitClass } = require('ujs_js')
+const { EmitClass } = require('ujs_js/ujs')
 
 export class ListenMouseEvent extends EmitClass {
   constructor (config) {

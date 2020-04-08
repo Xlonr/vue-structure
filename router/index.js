@@ -97,6 +97,11 @@ const vueRouter =  new Router({
       path: '/vFlow',
       name: 'flow',
       component: vFlow
+    },
+    {
+      path: '/vExcel',
+      name: 'jsExcel',
+      component: () => import('../src/view/v_js_excel')
     }
   ]
 })

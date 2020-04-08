@@ -21,6 +21,7 @@ import Battery from './process/Battery'
 import ColorSelector from './color/ColorSelector'
 import { PageArrow, Pagination, PageButton } from './pagination/index'
 import Flow from './flow/Flow'
+import JsExcel from './excel/JsExcel'
 
 export {
   Board,
@@ -44,5 +45,6 @@ export {
   PageArrow,
   Pagination,
   PageButton,
-  Flow
+  Flow,
+  JsExcel
 }

@@ -30,6 +30,7 @@ export default {
     ]),
     _changeMarkdown () {
       const routeName = this.$route.name
+      if (!routeName) return
       const firstChar = routeName.slice(0, 1).toUpperCase()
       const mdName = `m${firstChar}${routeName.slice(1 )}`
 

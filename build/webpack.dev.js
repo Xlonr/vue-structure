@@ -9,6 +9,6 @@ module.exports = merge(base, {
     historyApiFallback: false,
     hot: true,
     inline: true,
-    port: "7070"
+    port: "7071"
   }
 })

@@ -37,7 +37,7 @@ module.exports = {
   "parser": "vue-eslint-parser",
   "rules": {
     "indent": ["error", 2],
-    "linebreak-style": ["error", "windows"],
+    // "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
     "semi": ["off", "always"],
     "no-new": "off",

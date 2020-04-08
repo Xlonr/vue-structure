@@ -27,7 +27,8 @@ export default {
         { text: '圆环进度 (cirque)', path: '/vCirqueProcess' },
         { text: '颜色选择器 (color)', path: '/vColor' },
         { text: '分页（page）', path: '/vPage' },
-        { text: '懒加载（flow）', path: '/vFlow' }
+        { text: '懒加载（flow）', path: '/vFlow' },
+        { text: '协作表单（Excel）', path: '/vExcel' }
       ]
     }
   },
